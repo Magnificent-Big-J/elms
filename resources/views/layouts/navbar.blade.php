@@ -13,24 +13,24 @@
 
 
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="{{url('/Profile')}}">
+                <li class = "{{Request::is('Apply')?'active':''}}">
+                    <a href="{{url('Apply')}}">
 
                         <p>Apply</p>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
+                <li class = "{{Request::is('MyBills')?'active':''}}">
+                    <a href="{{url('MyBills')}}">
                         <p>My Bills</p>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
+                <li class = "{{Request::is('Bookings')?'active':''}}">
+                    <a href="{{url('Bookings')}}">
                         <p>Booking</p>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
+                <li class = "{{Request::is('Suggestions')?'active':''}}">
+                    <a href="{{url('Suggestions')}}">
 
                         <p>Suggestions</p>
                     </a>

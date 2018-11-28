@@ -29,7 +29,7 @@
 </head>
 <body>
 
-    <div class="wrapper">
+    <div class="wrapper" id="app">
         @include('layouts.sidebar')
         <div class="main-panel">
             @include('layouts.navbar')
@@ -42,9 +42,7 @@
     </div>
 
 
-    <!--   Core JS Files   -->
-    <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
-    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="{{asset('js/app.js')}}"></script>
 
     <!--  Charts Plugin -->
     <script src="assets/js/chartist.min.js"></script>
@@ -57,16 +55,7 @@
     <script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
 
     <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-    <script src="assets/js/demo.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
 
-            demo.initChartist();
-
-
-
-        });
-    </script>
 
 </body>
 </html>
