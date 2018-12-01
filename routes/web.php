@@ -14,8 +14,28 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/users', function () {
-    return view('management.users');
+
+
+Route::get('/users','usersController@index')->name('users');
+Route::get('/get_users','usersController@get_users')->name('get.users');
+Route::post('//addUser','usersController@store')->name('add.user');
+
+Route::get('/Calls','CallsController@index')->name('calls');
+Route::get('/get_calls','CallsController@get_calls')->name('get.calls');
+Route::put('/call_update/{id}','CallsController@update')->name('update.calls');
+
+
+Route::get('/Meetings','MeetingController@index')->name('meetings');
+Route::get('/get_meetings','MeetingController@get_meetings')->name('get.meetings');
+Route::put('/meeting_update/{id}','MeetingController@update')->name('meeting.update');
+//Route::get('','')->name();
+/*
+Route::get('/Meetings', function () {
+    return view('management.Meetings');
+});
+*/
+Route::get('/test', function () {
+    return view('test');
 });
 Route::get('/Dashboard', function () {
     return view('management.dashboard');
@@ -23,12 +43,7 @@ Route::get('/Dashboard', function () {
 Route::get('/Profile', function () {
     return view('management.profile');
 });
-Route::get('/Meetings', function () {
-    return view('management.Meetings');
-});
-Route::get('/Calls', function () {
-    return view('management.calls');
-});
+
 Route::get('/Projects', function () {
     return view('management.project');
 });
@@ -52,6 +67,9 @@ Route::get('/Bookings', function () {
 });
 Route::get('/Log-Call', function () {
     return view('residence.logcall');
+});
+Route::get('/Booking-Management', function () {
+    return view('management.book');
 });
 Auth::routes();
 

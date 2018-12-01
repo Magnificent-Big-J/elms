@@ -1,76 +1,58 @@
 <template>
-    <div class="content">
-        <div class="container-fluid">
+    <div class="card">
+        <div class="card-header">Book ward councilor for funerals or community meetings</div>
+        <div class="card-body">
+
             <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="header">
-                            <h4 class="title">Make a booking</h4>
-                            <p class="category">Book ward councilor for funerals or community meetings</p>
-                        </div>
-                        <div class="content table-responsive table-full-width">
-                            <table class="table table-hover table-striped">
-                                <thead>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Salary</th>
-                                <th>Country</th>
-                                <th>City</th>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Dakota Rice</td>
-                                    <td>$36,738</td>
-                                    <td>Niger</td>
-                                    <td>Oud-Turnhout</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Minerva Hooper</td>
-                                    <td>$23,789</td>
-                                    <td>Curaçao</td>
-                                    <td>Sinaai-Waas</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Sage Rodriguez</td>
-                                    <td>$56,142</td>
-                                    <td>Netherlands</td>
-                                    <td>Baileux</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Philip Chaney</td>
-                                    <td>$38,735</td>
-                                    <td>Korea, South</td>
-                                    <td>Overland Park</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Doris Greene</td>
-                                    <td>$63,542</td>
-                                    <td>Malawi</td>
-                                    <td>Feldkirchen in Kärnten</td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>Mason Porter</td>
-                                    <td>$78,615</td>
-                                    <td>Chile</td>
-                                    <td>Gloucester</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                <div class="col-md-8 offset-md-2">
+                    <div class="form-group row text-center">
+                        <label for="name" class="col-sm-4 col-form-label text-md-right">Book ward councilor for </label>
+
+                        <div class="col-md-6">
+                            <select name="plan_type_id" id="plan_type_id" class="form-control">
+                                <option value="">Funeral </option>
+                                <option value="">Community meeting</option>
+                            </select>
 
                         </div>
                     </div>
+                    <div class="form-group row text-center">
+                        <label for="name" class="col-sm-4 col-form-label text-md-right">Address</label>
+
+                        <div class="col-md-6">
+                            <input id="name" type="text" class="form-control" name="name"  >
+
+
+                        </div>
+                    </div>
+                    <div class="form-group row text-center">
+                        <label for="name" class="col-sm-4 col-form-label text-md-right">Start Date And Time</label>
+
+                        <div class="col-md-6">
+                            <input type="datetime-local" id="meeting-time"
+                                   name="meeting-time" value="2018-06-12T19:30"
+                                   min="2018-06-07T00:00" max="2018-06-14T00:00" class="form-control">
+
+
+                        </div>
+                    </div>
+                    <div class="form-group row text-center">
+                        <label for="name" class="col-sm-4 col-form-label text-md-right">End Date And Time</label>
+
+                        <div class="col-md-6">
+                            <input type="datetime-local" id="meeting-time"
+                                   name="meeting-time" value="2018-06-12T19:30"
+                                   min="2018-06-07T00:00" max="2018-06-14T00:00" class="form-control">
+
+
+                        </div>
+                    </div>
+                    <div class="form-group row text-center offset-md-3">
+                        <button class="btn btn-primary">Apply</button>
+                    </div>
                 </div>
-
-
-
-
             </div>
+
         </div>
     </div>
 </template>

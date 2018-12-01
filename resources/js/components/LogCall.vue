@@ -1,83 +1,62 @@
 <template>
-    <div class="content">
-        <div class="container-fluid">
+    <div class="card">
+        <div class="card-header">Log calls online regarding (water, electricity, sewage and potholes)</div>
+        <div class="card-body">
+
             <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="header">
-                            <h4 class="title">Log calls </h4>
-                            <p class="category">To the municipality</p>
+                <div class="col-md-8 offset-md-2">
+                    <div class="form-group row text-center">
+                        <label for="call_type_id" class="col-sm-4 col-form-label text-md-right">Book ward councilor for </label>
+
+                        <div class="col-md-6">
+                            <select name="call_type_id" id="call_type_id" v-model="call.call_type_id" :class="{'is-invalid':errors.call_type_id}"  class="form-control">
+                                <option value="">Select Call Type</option>
+                                <option value="dd">Water </option>
+                                <option value="jjj">Electricity</option>
+                                <option value="">Sewage </option>
+                                <option value="">Potholes</option>
+
+                                <option v-for="call in calls" :value="call.call_type_id" v-text="call.description"></option>
+                            </select>
+                            <small class="text-danger" v-if="errors.call_type_id">{{errors.call_type_id[0]}}</small>
                         </div>
-                        <div class="content table-responsive table-full-width">
-                            <table class="table table-hover table-striped">
-                                <thead>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Salary</th>
-                                <th>Country</th>
-                                <th>City</th>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Dakota Rice</td>
-                                    <td>$36,738</td>
-                                    <td>Niger</td>
-                                    <td>Oud-Turnhout</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Minerva Hooper</td>
-                                    <td>$23,789</td>
-                                    <td>Curaçao</td>
-                                    <td>Sinaai-Waas</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Sage Rodriguez</td>
-                                    <td>$56,142</td>
-                                    <td>Netherlands</td>
-                                    <td>Baileux</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Philip Chaney</td>
-                                    <td>$38,735</td>
-                                    <td>Korea, South</td>
-                                    <td>Overland Park</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Doris Greene</td>
-                                    <td>$63,542</td>
-                                    <td>Malawi</td>
-                                    <td>Feldkirchen in Kärnten</td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>Mason Porter</td>
-                                    <td>$78,615</td>
-                                    <td>Chile</td>
-                                    <td>Gloucester</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                    </div>
+                    <div class="form-group row text-center">
+                        <label for="reason" class="col-sm-4 col-form-label text-md-right">Reason</label>
+
+                        <div class="col-md-6">
+                            <textarea v-model="call.reason" :class="{'is-invalid':errors.reason}" name="reason" id="reason" cols="30" rows="10" class="form-control"></textarea>
+                            <small class="text-danger" v-if="errors.reason">{{errors.reason[0]}}</small>
 
                         </div>
                     </div>
+
+                    <div class="form-group row text-center offset-md-3">
+                        <button class="btn btn-primary" @click="Log_Call">Log A Call</button>
+                    </div>
                 </div>
-
-
-
-
             </div>
+
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        name: "log-call"
+        name: "log-call",
+        data(){return{
+            calls:{},
+            call:{
+                call_type_id:'',
+                reason:''
+            },
+            errors:{}
+        }},
+        methods:{
+            Log_Call(){
+
+            }
+        }
     }
 </script>
 
