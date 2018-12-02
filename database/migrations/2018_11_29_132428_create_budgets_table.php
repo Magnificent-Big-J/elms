@@ -17,7 +17,7 @@ class CreateBudgetsTable extends Migration
             $table->increments('id');
             $table->integer('year');
             $table->string('allocated_amount');
-            $table->string('used_amount')->nullable();
+            $table->string('used_amount')->default('0');
             $table->string('description');
             $table->timestamps();
         });

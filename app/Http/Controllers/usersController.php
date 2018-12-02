@@ -9,18 +9,29 @@ class usersController extends Controller
 {
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     public function index(){
         return view('management.users');
     }
+    public function profile(){
+        return view('management.profile');
+    }
     public function update(Request $request){
 
+        $user = User::findOrFail(Auth::id());
+
+        $this->validate($request,[
+            'email'=>'required|email|string|max:191|unique:users,email,'.$user->id,
+            'contact_number'=>'required|string'
+        ]);
+
+        $user->update($request->all());
+
+        return ['message'=>'Your Profile Contact Information have been updated successfully'];
     }
     public function store(Request $request){
-
-
 
         $user = $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
@@ -42,5 +53,9 @@ class usersController extends Controller
 
         return User::all();
 
+    }
+    public function get_profile(){
+
+        return User::where('id',Auth::id())->get();
     }
 }

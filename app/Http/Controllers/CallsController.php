@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Calls;
-
+use App\CallTypes;
+use Auth;
 class CallsController extends Controller
 {
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     public function index(){
@@ -42,8 +43,23 @@ class CallsController extends Controller
     }
     public function store(Request $request){
 
+        $call = $this->validate($request,[
+            'call_type_id'=>['required'],
+            'reason'=>['required','string'],
+        ]);
+
+        $call = array_merge($call,array('user_id'=>Auth::id(),'call_date'=>\Carbon\Carbon::now()));
+        $call = Calls::create($call);
+
+        return $call;
     }
     public function get_calls(){
         return Calls::with('user')->with('callType')->where('status','new')->get();
+    }
+    public function log_call(){
+        return view('residence.logcall');
+    }
+    public function get_call_types(){
+        return CallTypes::all();
     }
 }

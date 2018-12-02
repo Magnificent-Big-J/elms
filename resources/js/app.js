@@ -4,11 +4,19 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-import swal from 'sweetalert2'
-require('./bootstrap');
+
+
+
 
 window.Vue = require('vue');
 window.swal =swal
+
+import swal from 'sweetalert2'
+require('./bootstrap');
+require('chart.js');
+// vue-charts package
+require('hchs-vue-charts');
+Vue.use(VueCharts)
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -28,6 +36,11 @@ Vue.component('app-budgets', require('./components/Budgets.vue'));
 Vue.component('app-projects', require('./components/Projects.vue'));
 Vue.component('app-calls', require('./components/Calls.vue'));
 Vue.component('app-booking-management', require('./components/BookingManagement.vue'));
+Vue.component('app-application-management', require('./components/ApplicationManagement.vue'));
+Vue.component('app-dashboard', require('./components/Dashboard.vue'));
+Vue.component('app-profile', require('./components/Profile.vue'));
+
+
 
 
 // const files = require.context('./', true, /\.vue$/i)

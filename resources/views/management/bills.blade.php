@@ -1,7 +1,7 @@
 @extends('layouts.elms')
 @section('content')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Bills</h1>
+        <h1 class="h2">Bills Management</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
 
         </div>
@@ -18,13 +18,15 @@
                 <th>Action</th>
                 </thead>
                 <tbody>
+                @foreach($bills as $bill)
                 <tr>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>12 XXX street</td>
-                    <td>R458.00</td>
+                    <td>{{$bill->user->name}}</td>
+                    <td>{{$bill->user->surname}}</td>
+                    <td>{{$bill->user->address}}</td>
+                    <td>R {{$bill->amount}}</td>
                     <td><button class="btn btn-info btn-xs">Upload Bills</button></td>
                 </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

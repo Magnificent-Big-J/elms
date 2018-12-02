@@ -49,10 +49,32 @@
         }},
         methods:{
             apply(){
+                axios.post('/add_apply',this.plan)
+                    .then((response)=>{
+                    swal(
+                    'Submitted',
+                    'Application is successfully submitted',
+                    'success'
+                    )
+                        this.plan={
+                            plan_type_id:'',
+                            motivation:''
+
+                        }
+                    })
+                    .catch((error)=>{
+                            this.errors = error.response.data.errors
+                    })
 
             },
             get_plans(){
-
+                axios.get('/get_plan_types')
+                    .then((response)=>{
+                    this.plans = response.data
+            })
+            .catch((errors)=>{
+                    console.log(errors)
+            })
             }
         },
         created(){

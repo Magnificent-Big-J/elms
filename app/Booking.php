@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
 {
-    protected $fillable = ['booking_type_id','address','start_date','end_date','status'];
+    protected $fillable = ['booking_type_id','address','start_date','end_date','status','user_id'];
 
     public function bookingType(){
         return $this->belongsTo(BookingType::class);

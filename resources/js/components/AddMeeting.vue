@@ -40,7 +40,7 @@
                                     <div class="col-md-6">
                                         <input v-model="meeting.start_date" type="datetime-local" id="start_date"
                                                name="start_date" value="2018-06-12T19:30"
-                                               min="2018-06-07T00:00" max="2018-06-14T00:00" class="form-control" :class="{'is-invalid':errors.start_date}">
+                                                class="form-control" :class="{'is-invalid':errors.start_date}">
 
                                         <small class="text-danger" v-if="errors.start_date">{{errors.start_date[0]}}</small>
                                     </div>
@@ -51,7 +51,7 @@
                                     <div class="col-md-6">
                                         <input v-model="meeting.end_date" type="datetime-local" id="end_date"
                                                name="end_date" value="2018-06-12T19:30"
-                                               min="2018-06-07T00:00" max="2018-06-14T00:00" class="form-control" :class="{'is-invalid':errors.end_date}">
+                                               class="form-control" :class="{'is-invalid':errors.end_date}">
                                         <small class="text-danger" v-if="errors.end_date">{{errors.end_date[0]}}</small>
                                     </div>
                                 </div>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Create Meeting</button>
+                        <button type="button" class="btn btn-primary" @click="create_meeting">Create Meeting</button>
                     </div>
                 </div>
             </div>
@@ -84,8 +84,45 @@
             errors:{}
         }},
         methods:{
+            get_meeting_types(){
 
+
+                axios.get('/get_meeting_type')
+                    .then((response)=>{
+                            this.meetings = response.data
+                    })
+                    .catch((errors)=>{
+                            console.log(errors)
+                    })
+            },
+            create_meeting(){
+                axios.post('/createMeeting',this.meeting)
+                    .then((response)=>{
+                    swal(
+                    'Created',
+                    'Meeting is successfully created',
+                    'success'
+            )
+                this.$parent.meetings.push(response.data)
+                this.meeting = {
+                    meeting_type_id:'',
+                        address:'',
+                        start_date:'',
+                        end_date:''
+                }
+                this.get_meetings()
+            })
+            .catch((error)=>{
+                    this.errors = error.response.data.errors
+            })
+            }
+
+
+        },
+        created(){
+            this.get_meeting_types()
         }
+
     }
 </script>
 

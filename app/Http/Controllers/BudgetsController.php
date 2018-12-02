@@ -9,19 +9,28 @@ class BudgetsController extends Controller
 {
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     public function index(){
-        return view('');
+        return view('management.budgets');
     }
     public function update(Request $request){
 
     }
     public function store(Request $request){
+            $budget = $this->validate($request,[
+                    'year'=>['required','numeric'],
+                    'allocated_amount'=>['required','string'],
+                    'description'=>['required','string'],
+                ]);
+
+            $budget = Budgets::create($budget);
+
+            return $budget;
 
     }
-    public function get_all(){
-
+    public function get_budgets(){
+        return Budgets::all();
     }
 }

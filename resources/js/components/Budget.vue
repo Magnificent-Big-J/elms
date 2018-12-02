@@ -16,20 +16,23 @@
 
                         <div class="form-group">
                             <label for="year">Budget Year</label>
-                            <input type="text" class="form-control" name="year">
+                            <input type="text" class="form-control" name="year" :class="{'is-invalid':errors.year}" v-model="budget.year">
+                            <small class="text-danger" v-if="errors.year">{{errors.year[0]}}</small>
                         </div>
                         <div class="form-group">
-                            <label for="bamount">Budget Allocated Amount</label>
-                            <input type="text" class="form-control" name="bamount">
+                            <label for="allocated_amount">Budget Allocated Amount</label>
+                            <input type="text" class="form-control" name="bamount" :class="{'is-invalid':errors.allocated_amount}" v-model="budget.allocated_amount">
+                            <small class="text-danger" v-if="errors.allocated_amount">{{errors.allocated_amount[0]}}</small>
                         </div>
                         <div class="form-group">
-                            <label for="bamount">Budget Description</label>
-                            <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+                            <label for="description">Budget Description</label>
+                            <textarea name="description" id="description" cols="30" rows="10" class="form-control" :class="{'is-invalid':errors.description}" v-model="budget.description"></textarea>
+                            <small class="text-danger" v-if="errors.description">{{errors.description[0]}}</small>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-primary" @click="addBudget">Submit</button>
                     </div>
                 </div>
             </div>
@@ -42,7 +45,36 @@
 
 <script>
     export default {
-        name: "budget"
+        name: "budget",
+        data(){return{
+            errors:{},
+            budget:{
+                year:'',
+                allocated_amount:'',
+                description:''
+            }
+        }},
+        methods:{
+            addBudget(){
+                axios.post('/add_budget',this.budget)
+                    .then((response)=>{
+                    swal(
+                    'Added',
+                    'Budget is successfully added',
+                    'success'
+            )
+                this.$parent.budgets.push(response.data)
+                this.budget={
+                    year:'',
+                        allocated_amount:'',
+                        description:''
+                }
+            })
+            .catch((error)=>{
+                    this.errors = error.response.data.errors
+            })
+            }
+        }
     }
 </script>
 

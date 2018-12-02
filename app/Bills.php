@@ -10,4 +10,8 @@ class Bills extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+    public function scopeMyBills($query){
+        return $query->whereUserId(auth()->user()->id);
+
+    }
 }

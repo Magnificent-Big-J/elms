@@ -9,11 +9,17 @@ class BillsController extends Controller
 {
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     public function index(){
-        return view('');
+
+        $bills = Bills::with('user')->get();
+        return view('management.bills',compact('bills'));
+        return view('management.bills',compact('bills'));
+    }
+    public function mybills(){
+        return view('residence.mybills');
     }
     public function update(Request $request){
 
@@ -21,7 +27,12 @@ class BillsController extends Controller
     public function store(Request $request){
 
     }
+    public function user_bills(){
+        return Bills::MyBills()->get();
+    }
     public function get_all(){
 
+
     }
+
 }

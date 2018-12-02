@@ -10,7 +10,7 @@ class MeetingController extends Controller
 {
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     public function index(){
@@ -41,9 +41,25 @@ class MeetingController extends Controller
     }
     public function store(Request $request){
 
+        $meeting = $this->validate($request,[
+                    'meeting_type_id'=>['required'],
+                    'address'=>['required','string'],
+                    'start_date'=>['required'],
+                    'end_date'=>['required'],
+
+                ]);
+        $meeting = array_merge($meeting, array('user_id'=>Auth::id()));
+
+        $meeting = Meeting::create($meeting);
+
+        return $meeting;
+
     }
     public function get_meetings(){
 
         return Meeting::with('meetingType')->where('status','new')->get();
+    }
+    public function get_meeting_type(){
+        return MeetingType::all();
     }
 }

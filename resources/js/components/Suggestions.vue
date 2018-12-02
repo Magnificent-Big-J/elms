@@ -44,7 +44,21 @@
         }},
         methods:{
             Suggest(){
-
+                axios.post('/addsuggession',this.suggestion)
+                    .then((response)=>{
+                        swal(
+                        'Created',
+                        'Project Suggestion is successfully created',
+                        'success'
+                         )
+            })
+            .catch((error)=>{
+                    this.errors = error.response.data.errors
+            })
+                this.suggestion ={
+                    name:'',
+                        motivation:''
+                }
             }
         }
     }

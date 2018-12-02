@@ -106,6 +106,16 @@
                             'success'
                             )
                         this.$parent.users.push(response.data)
+                this.user={
+                    name:'',
+                        surname:'',
+                        contact_number:'',
+                        gender:'',
+                        address:'',
+                        postal_code:'',
+                        email:'',
+                        type:''
+                }
                     })
                     .catch((error)=>{
                         this.errors = error.response.data.errors

@@ -15,24 +15,28 @@
 
                         <div class="form-group">
                             <label for="year">Project Name</label>
-                            <input type="text" class="form-control" name="year">
+                            <input type="text" class="form-control" name="year" :class="{'is-danger':errors.project_name}" v-model="project.project_name">
+                            <small class="text-danger" v-if="errors.project_name">{{errors.project_name[0]}}</small>
                         </div>
                         <div class="form-group">
-                            <label for="bamount">Project Start Date</label>
-                            <input type="date" class="form-control" name="bamount">
+                            <label for="start_date">Project Start Date</label>
+                            <input type="date" class="form-control" name="start_date" :class="{'is-danger':errors.start_date}" v-model="project.start_date">
+                            <small class="text-danger" v-if="errors.start_date">{{errors.start_date[0]}}</small>
                         </div>
                         <div class="form-group">
-                            <label for="bamount">Project End Date</label>
-                            <input type="date" class="form-control" name="bamount">
+                            <label for="end_start">Project End Date</label>
+                            <input type="date" class="form-control" name="end_date" :class="{'is-danger':errors.end_date}" v-model="project.end_date">
+                            <small class="text-danger" v-if="errors.end_date">{{errors.end_date[0]}}</small>
                         </div>
                         <div class="form-group">
-                            <label for="bamount">Project Description</label>
-                            <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+                            <label for="description">Project Description</label>
+                            <textarea name="" id="" cols="30" rows="10" class="form-control" :class="{'is-danger':errors.description}" v-model="project.description"></textarea>
+                            <small class="text-danger" v-if="errors.description">{{errors.description[0]}}</small>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-primary" @click="add_project">Add</button>
                     </div>
                 </div>
             </div>
@@ -43,7 +47,41 @@
 
 <script>
     export default {
-        name: "project"
+        name: "project",
+        data(){return{
+            project:{
+
+                project_name:'',
+                start_date:'',
+                end_date:'',
+                description:''
+            },
+            errors:{}
+        }},
+        methods:{
+            add_project(){
+                axios.post('/add_project',this.project)
+                    .then((response)=>{
+                    swal(
+                            'Created',
+                            'Upcoming Project is successfully created',
+                            'success'
+                    )
+                        this.$parent.projects.push(response.data)
+                        this.project={
+                            year:'',
+                                project_name:'',
+                                start_date:'',
+                                end_date:'',
+                                description:''
+                        }
+
+                    })
+                    .catch((error)=>{
+                            this.errors = error.response.data.errors
+                    })
+            }
+        }
     }
 </script>
 
