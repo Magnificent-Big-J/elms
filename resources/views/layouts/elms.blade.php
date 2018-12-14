@@ -30,6 +30,7 @@
 <script src="{{asset('js/app.js')}}"></script>
 <!-- Icons -->
 <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script>
     feather.replace()
 </script>

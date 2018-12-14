@@ -43,6 +43,7 @@
 
 
     <script src="{{asset('js/app.js')}}"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
     <!--  Charts Plugin -->
     <script src="assets/js/chartist.min.js"></script>

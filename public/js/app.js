@@ -115992,7 +115992,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -116037,9 +116037,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 
 
@@ -116048,7 +116045,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {
         pdf: __WEBPACK_IMPORTED_MODULE_0_vue_pdf___default.a
     },
-    props: ['file_path']
+    props: ['file_path'],
+    methods: {
+        downloadFile: function downloadFile() {
+            window.location.href = this.file_path;
+        }
+    }
 
 });
 
@@ -116109,7 +116111,13 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("print")]
+              [_vm._v("Print")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              { staticClass: "btn btn-info", on: { click: _vm.downloadFile } },
+              [_vm._v("Download")]
             )
           ])
         ])

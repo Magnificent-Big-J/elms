@@ -1,9 +1,5 @@
 <template>
 
-
-
-
-
     <!-- Modal -->
     <div class="modal fade"  id="viewBill" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -24,7 +20,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button class="btn btn-primary" @click="$refs.myPdfComponent.print()">print</button>
+                    <button class="btn btn-primary" @click="$refs.myPdfComponent.print()">Print</button>
+                    <button class="btn btn-info" @click="downloadFile">Download</button>
                 </div>
             </div>
         </div>
@@ -42,6 +39,11 @@
             pdf
         },
         props:['file_path'],
+        methods:{
+            downloadFile(){
+                window.location.href = this.file_path
+            }
+        }
 
 
     }
