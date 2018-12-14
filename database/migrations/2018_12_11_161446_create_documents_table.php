@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlansTable extends Migration
+class CreateDocumentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreatePlansTable extends Migration
      */
     public function up()
     {
-        Schema::create('plans', function (Blueprint $table) {
+        Schema::create('documents', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('plan_type_id')->unsigned();
-            $table->string('motivation');
-            $table->string('status')->default('new');
+            $table->integer('document_type_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->date('plan_date');
+            $table->string('file_path');
+            $table->integer('plan_id')->nullable();
+            $table->dateTime('date_uploaded');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreatePlansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plans');
+        Schema::dropIfExists('documents');
     }
 }

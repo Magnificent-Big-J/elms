@@ -14,7 +14,7 @@
 
             </div>
             <div class="row">
-                <div class="col-md-3 mb-2" v-for="application in applications">
+                <div class="col-md-4 ml-1 mr-1 mb-2" v-for="application in applications">
                     <div class="card">
                         <div class="card-header">Application for : {{application.plan_type.description}}</div>
                         <div class="card-body">
@@ -23,6 +23,7 @@
                             </p>
                         </div>
                         <div class="card-footer">
+                            <button class="btn btn-info" >View</button>
                             <button class="btn btn-primary" @click="update(application.id,1)">Accept</button>
                             <button class="btn btn-danger" @click="update(application.id,2)">Decline</button>
                         </div>

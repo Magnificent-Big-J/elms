@@ -12,32 +12,42 @@
             </div>
             <table class="table table-hover table-bordered table-stropped">
                 <thead>
-                <th>Amount</th>
+
                 <th>Date</th>
+                <th>Amount</th>
                 <th>Status</th>
+                <th>Action</th>
 
                 </thead>
                 <tbody>
                 <tr v-for="bill in bills">
-                    <td>{{bill.amount}}</td>
+
                     <td>{{bill.bill_month}}</td>
+                    <td>R {{bill.amount}}</td>
                     <td>{{bill.status}}</td>
+                    <td><button class="btn btn-info" @click="opeModal(bill.id)" >View</button></td>
 
                 </tr>
                 </tbody>
             </table>
 
         </div>
-
+            <app-view-bills :file_path="file_path"></app-view-bills>
     </div>
 </template>
 
 <script>
+    import mybills from '../components/ViewBill'
     export default {
         name: "my-bills",
+         components:{
+             appViewBills:mybills
+         },
         data(){return{
             bills:{},
-            data_isLoading:false
+            data_isLoading:false,
+            file_path:''
+
         }},
         methods:{
             get_user_bills(){
@@ -51,6 +61,24 @@
             .catch((errors)=>{
                     console.log(errors)
             })
+            },
+            opeModal(id){
+
+
+                axios.get('/get_mybill/'+ id)
+                    .then((response)=>{
+                    this.file_path = response.data
+
+                console.log(this.file_path)
+                })
+                .catch((errors)=>{
+                        console.log(errors)
+                })
+
+                $("#viewBill").modal('show')
+
+
+
             }
         },
         created(){

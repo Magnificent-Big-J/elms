@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\documents;
 use Illuminate\Http\Request;
 use App\Plans;
 use Auth;
 use App\PlanType;
+
 class PlansController extends Controller
 {
     public function __construct()
@@ -40,15 +42,37 @@ class PlansController extends Controller
         }
     }
     public function store(Request $request){
-            $plan = $this->validate($request,[
-                'plan_type_id'=>['required'],
-                'motivation'=>['required','string'],
-            ]);
 
-            $plan = array_merge($plan,array('user_id'=>Auth::id(),'plan_date'=>\Carbon\Carbon::now()));
-            $plan = Plans::create($plan);
+        $plan = $this->createPlan($request->plan_type_id,$request->motivation);
 
-            return $plan;
+        if($request->plan_type_id == 1){
+            if($request->hasFile('certified_id')) {
+                $doc_file = $request->file('certified_id');
+                $certificate_id = $this->UploadDocuments($doc_file);
+                $this->createDocument(1,$request->plan_type_id,$plan->id,$certificate_id);
+            }
+            if($request->hasFile('letter')) {
+                $doc_file = $request->file('letter');
+                $letter = $this->UploadDocuments($doc_file);
+                $this->createDocument(2,$request->plan_type_id,$plan->id,$letter);
+            }
+
+
+        }
+        else if($request->plan_type_id == 2){
+
+            if($request->hasFile('house_plan')) {
+                $doc_file = $request->file('house_plan');
+                $house_plan = $this->UploadDocuments($doc_file);
+                $this->createDocument(3,$request->plan_type_id,$plan->id,$house_plan);
+            }
+        }
+
+
+
+
+        return;
+
     }
     public function get_application(){
         return Plans::with('planType')->where('status','new')->get();
@@ -58,5 +82,53 @@ class PlansController extends Controller
     }
     public function application_management(){
         return view('management.applications');
+    }
+    public function saveFile(Request $request){
+
+        //return $request->all();
+        if($request->hasFile('certified_id')){
+            $doc_file = $request->file('certified_id');
+            $file =  $this->additional_filename().'_'. $doc_file->getClientOriginalName() ;
+            $doc_file->move("certificates/",$file);
+
+            return 'File uploaded';
+        }
+
+
+        return 'Something went wrong';
+    }
+    protected function UploadDocuments($document){
+
+        $file = $this->additional_filename() . $document->getClientOriginalName();
+        $document->move("certificates/",$file);
+
+        return $file;
+    }
+    protected function additional_filename(){
+        return auth()->user()->name.'_'.time();
+    }
+    protected function createPlan($plan_type_id,$motivation){
+        $plan = Plans::create([
+            'plan_type_id'=>$plan_type_id,
+            'motivation'=>$motivation,
+            'user_id'=>Auth::id(),
+            'plan_date'=>\Carbon\Carbon::now()
+
+        ]);
+
+        return $plan;
+    }
+    protected function createDocument($document_type_id,$plan_type_id,$plan_id,$file_path){
+
+        documents::create([
+            'document_type_id'=>$document_type_id,
+            'plan_type_id'=>$plan_type_id,
+            'document_type_id'=>$document_type_id,
+            'user_id'=>Auth::id(),
+            'plan_id'=>$plan_id,
+            'date_uploaded'=>\Carbon\Carbon::now(),
+            'file_path'=>$file_path
+
+        ]);
     }
 }

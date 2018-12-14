@@ -24,6 +24,7 @@
         "chart.js": "^2.7.3",
         "hchs-vue-charts": "^1.2.8",
         "sweetalert2": "^7.29.2",
-        "vue-chartjs": "^3.4.0"
+        "vue-chartjs": "^3.4.0",
+        "vue-pdf": "^4.0.4"
     }
 }

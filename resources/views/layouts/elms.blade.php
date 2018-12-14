@@ -21,7 +21,7 @@
     <div class="row">
        @include('layouts.elms_sidebar')
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" id="app">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" id="app" >
            @yield('content')
         </main>
     </div>

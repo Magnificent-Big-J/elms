@@ -44,7 +44,7 @@ class usersController extends Controller
             'type' => ['required', 'string'],
         ]);
         $user = array_merge($user,array('password'=>bcrypt('secret')));
-      $user = User::create($user);
+        $user = User::create($user);
 
 
       return $user;
@@ -57,5 +57,9 @@ class usersController extends Controller
     public function get_profile(){
 
         return User::where('id',Auth::id())->get();
+    }
+    public function get_residence(){
+
+        return User::where('type','residence')->get();
     }
 }

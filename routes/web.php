@@ -15,6 +15,7 @@ Route::redirect('/', '/Dashboard');
 
 Route::get('/users','usersController@index')->name('users');
 Route::get('/get_users','usersController@get_users')->name('get.users');
+Route::get('/get_residence','usersController@get_residence')->name('get.residence');
 Route::post('/addUser','usersController@store')->name('add.user');
 Route::put('/update_user','usersController@update')->name('update');
 Route::get('/get_profile','usersController@get_profile')->name('get_profile');
@@ -40,6 +41,7 @@ Route::post('/addsuggession','SuggestionController@store')->name('addsuggession'
 Route::get('/Apply','PlansController@index')->name('apply');
 Route::get('/get_plan_types','PlansController@get_plan_types')->name('get.plan_types');
 Route::post('/add_apply','PlansController@store')->name('add.apply');
+Route::post('/saveFile','PlansController@saveFile')->name('saveFile');
 Route::get('/get_application','PlansController@get_application')->name('get.application');
 Route::get('/Application-Management','PlansController@application_management')->name('application.management');
 Route::put('/application_update/{id}','PlansController@update')->name('applation.update');
@@ -61,8 +63,11 @@ Route::get('/get_bookings','BookingController@get_bookings')->name('get.bookings
 Route::get('/Booking-Management','BookingController@booking_management')->name('booking.management');
 
 Route::get('/Bill','BillsController@index')->name('bills');
+Route::get('/get_bills','BillsController@get_bills')->name('get.bills');
+Route::post('/bill_upload','BillsController@store')->name('bill.upload');
 Route::get('/MyBills','BillsController@mybills')->name('mybills');
 Route::get('/get_user_bills','BillsController@user_bills')->name('user.bills');
+Route::get('/get_mybill/{id}','BillsController@get_mybill')->name('get.mybill');
 
 Auth::routes();
 

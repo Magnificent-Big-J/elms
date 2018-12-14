@@ -16,9 +16,9 @@ class CreateBillsTable extends Migration
         Schema::create('bills', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('amount')->nullable();
-            $table->string('file')->nullable();
+            $table->integer('document_id')->unsigned()->nullable();
             $table->string('status')->default('unpaid');
+            $table->string('amount');
             $table->date('bill_month');
             $table->timestamps();
         });

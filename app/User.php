@@ -46,4 +46,7 @@ class User extends Authenticatable
     public function plans(){
         return $this->hasMany(Plans::class);
     }
+    public function documents(){
+        return $this->hasMany(documents::class);
+    }
 }

@@ -16,6 +16,7 @@ class BillsTableSeeder extends Seeder
         foreach ($residence as $res){
             \App\Bills::create([
                 'user_id'=>$res->id,
+                'amount'=>rand(500,3000),
                 'bill_month'=>\Carbon\Carbon::now()
             ]);
         }

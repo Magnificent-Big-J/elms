@@ -15,6 +15,7 @@ class TypesTableSeeder extends Seeder
         $meetings = array(array('description'=>'Funerals'),array('description'=>'Community meetings'),array('description'=>'Project Issuing'),array('description'=>'Potholes'));
         $bookings = array(array('description'=>'Funerals'),array('description'=>'Community meetings'));
         $calls = array(array('description'=>'Water'),array('description'=>'Electricity'),array('description'=>'Sewage '),array('description'=>'Potholes'));
+        $doc_types = array(array('description'=>'Certified ID'),array('description'=>'Letter'),array('description'=>'House Plan '),array('description'=>'Bill'));
 
         foreach ($plans as $plan){
             \App\PlanType::create($plan);
@@ -27,6 +28,9 @@ class TypesTableSeeder extends Seeder
         }
         foreach ($calls as $call){
             \App\CallTypes::create($call);
+        }
+        foreach ($doc_types as $doc_type){
+            \App\document_types::create($doc_type);
         }
     }
 }

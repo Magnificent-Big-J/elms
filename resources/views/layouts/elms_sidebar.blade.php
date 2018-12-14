@@ -1,5 +1,5 @@
 <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-    <div class="sidebar-sticky">
+    <div class="sidebar-sticky" style="background-color:LightGray;">
         <ul class="nav flex-column">
 
             <li class="nav-item">
@@ -30,7 +30,7 @@
             <li class="nav-item">
                 <a class="nav-link {{Request::is('Apply')?'active':''}}" href="{{url('/Apply')}}">
                     <span data-feather="users"></span>
-                    Apply
+                    Application
                 </a>
             </li>
             <li class="nav-item">
@@ -106,6 +106,12 @@
             </li>
             @endcan
         </ul>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>Reports</span>
+            <a class="d-flex align-items-center text-muted" href="#">
+                <span data-feather="plus-circle"></span>
+            </a>
+        </h6>
 
     </div>
 </nav>
