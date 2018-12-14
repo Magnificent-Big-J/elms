@@ -9,7 +9,7 @@
 
     <!-- Bootstrap core CSS -->
 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{   asset('css/app.css') }}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
 </head>
