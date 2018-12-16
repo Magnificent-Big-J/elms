@@ -20,6 +20,7 @@ class CreateCallsTable extends Migration
             $table->string('status')->default('new');
             $table->string('reason');
             $table->dateTime('call_date');
+            $table->string('accepted_by')->nullable();
             $table->timestamps();
         });
     }

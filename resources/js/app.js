@@ -40,6 +40,8 @@ Vue.component('app-application-management', require('./components/ApplicationMan
 Vue.component('app-dashboard', require('./components/Dashboard.vue'));
 Vue.component('app-profile', require('./components/Profile.vue'));
 Vue.component('app-bills-management', require('./components/BillsManagemnt.vue'));
+Vue.component('app-call-progress', require('./components/CallProgress.vue'));
+Vue.component('app-ward', require('./components/Ward.vue'));
 
 
 

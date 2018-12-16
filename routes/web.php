@@ -29,11 +29,15 @@ Route::put('/call_update/{id}','CallsController@update')->name('update.calls');
 Route::get('/Log-Call','CallsController@log_call')->name('log.call');
 Route::get('/get_call_types','CallsController@get_call_types')->name('get.calltypes');
 Route::post('/addCall','CallsController@store')->name('add.call');
+Route::get('/Calls-Progress','CallsController@CallsProgress')->name('Calls.Progress');
+Route::get('/Call-Progress','CallsController@progress')->name('Call.Progress');
 
 Route::get('/Meetings','MeetingController@index')->name('meetings');
+Route::get('/Accepted-Meeting','MeetingController@acceptedmeeting')->name('accepted.meeting');
 Route::get('/get_meetings','MeetingController@get_meetings')->name('get.meetings');
 Route::put('/meeting_update/{id}','MeetingController@update')->name('meeting.update');
 Route::get('/get_meeting_type','MeetingController@get_meeting_type')->name('get.meeting_type');
+Route::get('/wardCouncil','MeetingController@wardCouncil')->name('wardCouncil');
 Route::post('/createMeeting','MeetingController@store')->name('create.meeting');
 
 Route::get('/Suggestions','SuggestionController@index')->name('suggestions');

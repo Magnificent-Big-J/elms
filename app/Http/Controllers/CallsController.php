@@ -35,6 +35,7 @@ class CallsController extends Controller
         $call = Calls::find($id);
         if($status && $message){
             $call->status = $status;
+            $call->accepted_by = auth()->user()->name . ' ' .auth()->user()->surname;
             $call->save();
 
             return ['message'=>$message,'status'=>$status];
@@ -54,12 +55,29 @@ class CallsController extends Controller
         return $call;
     }
     public function get_calls(){
-        return Calls::with('user')->with('callType')->where('status','new')->get();
+        return Calls::with('user')->with('callType')
+                    ->where('status','new')
+                    ->orWhere('status','accepted')
+                    ->get();
     }
     public function log_call(){
         return view('residence.logcall');
     }
     public function get_call_types(){
         return CallTypes::all();
+    }
+    public function CallsProgress(){
+
+        if(auth()->user()->type =='residence'){
+            return Calls::with('callType')->with('user')->MyCalls()->get();
+        }
+        else{
+            return Calls::with('callType')->with('user')->get();
+        }
+
+
+    }
+    public function progress(){
+        return view('management.progress');
     }
 }

@@ -12,6 +12,8 @@
     <link href="{{   asset('css/app.css') }}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
+    <link href="{{asset('css/style.css')}}" rel="stylesheet">
+    <link rel="shortcut icon" href="images/logo.png" />
 </head>
 
 <body>
@@ -21,7 +23,7 @@
     <div class="row">
        @include('layouts.elms_sidebar')
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" id="app" >
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 col-sm-8" id="app" >
            @yield('content')
         </main>
     </div>

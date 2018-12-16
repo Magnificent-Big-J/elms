@@ -66,8 +66,6 @@ class BillsController extends Controller
     }
     protected function get_mybill($id){
 
-
-
         $bill = Bills::find($id);
 
         $document = documents::find($bill->document_id);

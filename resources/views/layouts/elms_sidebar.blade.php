@@ -1,4 +1,4 @@
-<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+<nav class="col-md-2 col-sm-4 d-none d-md-block bg-light sidebar">
     <div class="sidebar-sticky" style="background-color:LightGray;">
         <ul class="nav flex-column">
 
@@ -51,6 +51,7 @@
                     Booking
                 </a>
             </li>
+
             @endcan
             @can('isEmployee')
             <li class="nav-item">
@@ -98,13 +99,20 @@
             </li>
             @endcan
             @can('isWard')
-            <li class="nav-item">
-                <a class="nav-link {{Request::is('Meetings')?'active':''}}" href="{{url('/Meetings')}}">
-                    <span data-feather="calendar"></span>
-                    Meeting Management
-                </a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link {{Request::is('Meetings')?'active':''}}" href="{{url('/Meetings')}}">
+                        <span data-feather="calendar"></span>
+                        Meeting Management
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{Request::is('Accepted-Meeting')?'active':''}}" href="{{url('/Accepted-Meeting')}}">
+                        <span data-feather="book-open"></span>
+                        Accepted Meeting
+                    </a>
+                </li>
             @endcan
+
         </ul>
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
             <span>Reports</span>
@@ -112,6 +120,14 @@
                 <span data-feather="plus-circle"></span>
             </a>
         </h6>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link {{Request::is('Call-Progress')?'active':''}}" href="{{url('/Call-Progress')}}">
+                    <span data-feather="layers"></span>
+                    Call Progress
+                </a>
+            </li>
+        </ul>
 
     </div>
 </nav>
