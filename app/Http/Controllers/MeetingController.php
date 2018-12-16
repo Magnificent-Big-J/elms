@@ -63,7 +63,8 @@ class MeetingController extends Controller
         return MeetingType::all();
     }
     public function acceptedmeeting(){
-        return view('management.meeting');
+        $meetings =  Meeting::with('meetingType')->where('status','accepted')->MyMettings()->get();
+        return view('management.meeting',compact('meetings'));
     }
     public function wardCouncil(){
         return Meeting::with('meetingType')->where('status','accepted')->MyMettings()->get();

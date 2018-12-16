@@ -31,6 +31,7 @@ Route::get('/get_call_types','CallsController@get_call_types')->name('get.callty
 Route::post('/addCall','CallsController@store')->name('add.call');
 Route::get('/Calls-Progress','CallsController@CallsProgress')->name('Calls.Progress');
 Route::get('/Call-Progress','CallsController@progress')->name('Call.Progress');
+Route::get('/tests','CallsController@progress')->name('Call.Progress');
 
 Route::get('/Meetings','MeetingController@index')->name('meetings');
 Route::get('/Accepted-Meeting','MeetingController@acceptedmeeting')->name('accepted.meeting');

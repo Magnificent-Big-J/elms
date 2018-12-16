@@ -78,6 +78,12 @@ class CallsController extends Controller
 
     }
     public function progress(){
-        return view('management.progress');
+        if(auth()->user()->type =='residence'){
+            $calls = Calls::with('callType')->with('user')->MyCalls()->get();
+        }
+        else{
+            $calls = Calls::with('callType')->with('user')->get();
+        }
+        return view('management.progress',compact('calls'));
     }
 }
