@@ -39,7 +39,7 @@ Vue.component('app-booking-management', require('./components/BookingManagement.
 Vue.component('app-application-management', require('./components/ApplicationManagement.vue'));
 Vue.component('app-dashboard', require('./components/Dashboard.vue'));
 Vue.component('app-profile', require('./components/Profile.vue'));
-Vue.component('app-accept-bill', require('./components/AcceptBill.vue'), {
+Vue.component('acceptBill', require('./components/AcceptBill.vue'), {
     name: 'app-accept-bill'
 });
 Vue.component('app-bills-management', require('./components/BillsManagemnt.vue'));
