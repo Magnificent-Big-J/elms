@@ -37987,8 +37987,6 @@ module.exports = __webpack_require__(383);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(164);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert2__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_AcceptBill_vue__ = __webpack_require__(398);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_AcceptBill_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_AcceptBill_vue__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -38027,11 +38025,12 @@ Vue.component('app-booking-management', __webpack_require__(340));
 Vue.component('app-application-management', __webpack_require__(345));
 Vue.component('app-dashboard', __webpack_require__(350));
 Vue.component('app-profile', __webpack_require__(368));
-//Vue.component('app-accept-bill', require('./components/AcceptBill.vue'));
+Vue.component('app-accept-bill', __webpack_require__(398), {
+  name: 'app-accept-bill'
+});
 Vue.component('app-bills-management', __webpack_require__(373));
 //Vue.component('app-call-progress', require('./components/CallProgress.vue'));
 //Vue.component('app-ward', require('./components/Ward.vue'));
-
 
 
 // const files = require.context('./', true, /\.vue$/i)
@@ -38052,10 +38051,8 @@ window.toast = toast;
  */
 
 var app = new Vue({
-  el: '#app',
-  components: {
-    appAcceptBill: __WEBPACK_IMPORTED_MODULE_1__components_AcceptBill_vue___default.a
-  }
+  el: '#app'
+
 });
 
 /***/ }),
