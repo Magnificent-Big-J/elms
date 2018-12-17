@@ -75,6 +75,9 @@ Route::post('/bill_upload','BillsController@store')->name('bill.upload');
 Route::get('/MyBills','BillsController@mybills')->name('mybills');
 Route::get('/get_user_bills','BillsController@user_bills')->name('user.bills');
 Route::get('/get_mybill/{id}','BillsController@get_mybill')->name('get.mybill');
+Route::get('/Manage-Payments','BillsController@accept_bill_payemnt')->name('manage.payments');
+Route::get('/get_res_bills','BillsController@get_res_bills')->name('get.res.bills');
+Route::put('/bill_received/{id}','BillsController@bill_received')->name('bill.received');
 
 Auth::routes();
 

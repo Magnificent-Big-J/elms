@@ -71,5 +71,18 @@ class BillsController extends Controller
         $document = documents::find($bill->document_id);
         return './bills/'. $document->file_path;
     }
+    public function accept_bill_payemnt(){
+        return view('management.accept_bill');
+    }
+    public function get_res_bills(){
+        return Bills::with('user')->where('status','unpaid')->get();
+    }
+    public function bill_received($id){
+        $bill = Bills::find($id);
+        $bill->status = 'paid';
+        $bill->save();
+
+        return ['message'=>'Payment Received'];
+    }
 
 }

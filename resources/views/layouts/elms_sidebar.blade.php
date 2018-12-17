@@ -60,6 +60,12 @@
                     Bills Management
                 </a>
             </li>
+                <li class="nav-item">
+                    <a class="nav-link {{Request::is('Manage-Payments')?'active':''}}" href="{{url('/Manage-Payments')}}">
+                        <span data-feather="briefcase"></span>
+                        Manage Bill Payments
+                    </a>
+                </li>
             <li class="nav-item">
                 <a class="nav-link {{Request::is('Booking-Management')?'active':''}}" href="{{url('/Booking-Management')}}">
                     <span data-feather="layers"></span>
