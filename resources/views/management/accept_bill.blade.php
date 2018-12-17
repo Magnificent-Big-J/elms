@@ -6,6 +6,6 @@
 
         </div>
     </div>
-    <acceptBill></acceptBill>
+    <app-accept-bill></app-accept-bill>
 
 @endsection

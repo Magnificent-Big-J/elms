@@ -38025,7 +38025,7 @@ Vue.component('app-booking-management', __webpack_require__(340));
 Vue.component('app-application-management', __webpack_require__(345));
 Vue.component('app-dashboard', __webpack_require__(350));
 Vue.component('app-profile', __webpack_require__(368));
-Vue.component('acceptBill', __webpack_require__(398), {
+Vue.component('app-accept-bill', __webpack_require__(398), {
   name: 'app-accept-bill'
 });
 Vue.component('app-bills-management', __webpack_require__(373));
