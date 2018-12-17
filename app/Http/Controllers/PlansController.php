@@ -131,4 +131,21 @@ class PlansController extends Controller
 
         ]);
     }
+    public function application_progress(){
+
+        if(auth()->user()->type == 'residence'){
+            $plans = Plans::with('planType')->with('user')->Mine()->paginate(5);
+        }
+        else{
+            $plans = Plans::with('planType')->with('user')->paginate(5);
+        }
+        return view('management.application_progress',compact('plans'));
+    }
+    public function view_application($id){
+
+        return view('management.ViewApplication');
+    }
+    public function test(){
+        return view('management.test');
+    }
 }

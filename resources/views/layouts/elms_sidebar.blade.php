@@ -133,6 +133,18 @@
                     Call Progress
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{Request::is('Application-Progress')?'active':''}}" href="{{url('/Application-Progress')}}">
+                    <span data-feather="grid"></span>
+                   Application Progress
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{Request::is('Bill-History')?'active':''}}" href="{{url('/Bill-History')}}">
+                    <span data-feather="grid"></span>
+                    Bill History
+                </a>
+            </li>
         </ul>
 
     </div>

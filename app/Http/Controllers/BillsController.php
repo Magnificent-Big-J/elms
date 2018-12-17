@@ -80,7 +80,7 @@ class BillsController extends Controller
         return Bills::with('user')->where('status','unpaid')->get();
     }
     public function bill_received($id){
-        
+
         $bill = Bills::find($id);
         $bill->status = 'paid';
         $bill->save();
@@ -88,6 +88,10 @@ class BillsController extends Controller
 
         return redirect()->back();
         //return ['message'=>'Payment Received'];
+    }
+    public function bill_history(){
+        $bills = Bills::with('user')->paginate(5);
+        return view('management.bill_history',compact('bills'));
     }
 
 }

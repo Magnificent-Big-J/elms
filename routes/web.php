@@ -52,6 +52,8 @@ Route::post('/saveFile','PlansController@saveFile')->name('saveFile');
 Route::get('/get_application','PlansController@get_application')->name('get.application');
 Route::get('/Application-Management','PlansController@application_management')->name('application.management');
 Route::put('/application_update/{id}','PlansController@update')->name('applation.update');
+Route::get('/Application-Progress','PlansController@application_progress')->name('applation.progress');
+Route::get('/test','PlansController@test')->name('test');
 
 Route::get('/Projects','ProjectsController@index')->name('projects');
 Route::get('/get_projects','ProjectsController@get_projects')->name('get.projects');
@@ -78,6 +80,7 @@ Route::get('/get_mybill/{id}','BillsController@get_mybill')->name('get.mybill');
 Route::get('/Manage-Payments','BillsController@accept_bill_payemnt')->name('manage.payments');
 Route::get('/get_res_bills','BillsController@get_res_bills')->name('get.res.bills');
 Route::get('/bill-received/{id}','BillsController@bill_received')->name('bill.received');
+Route::get('/Bill-History','BillsController@bill_history')->name('bill.history');
 
 Auth::routes();
 

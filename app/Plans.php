@@ -17,4 +17,8 @@ class Plans extends Model
     public function documents(){
         return $this->hasMany(documents::class);
     }
+    public function scopeMine($query){
+
+        return $query->whereUserId(auth()->user()->id);
+    }
 }
