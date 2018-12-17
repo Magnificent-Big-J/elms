@@ -13,3 +13,5 @@ npm-debug.log
 yarn-error.log
 .env
 .phpunit.result.cache
+/public/certificates/
+/public/bills/

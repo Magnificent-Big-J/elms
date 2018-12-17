@@ -39,12 +39,12 @@ Vue.component('app-booking-management', require('./components/BookingManagement.
 Vue.component('app-application-management', require('./components/ApplicationManagement.vue'));
 Vue.component('app-dashboard', require('./components/Dashboard.vue'));
 Vue.component('app-profile', require('./components/Profile.vue'));
-Vue.component('app-accept-bill', require('./components/AcceptBill.vue'));
+//Vue.component('app-accept-bill', require('./components/AcceptBill.vue'));
 Vue.component('app-bills-management', require('./components/BillsManagemnt.vue'));
-Vue.component('app-call-progress', require('./components/CallProgress.vue'));
-Vue.component('app-ward', require('./components/Ward.vue'));
+//Vue.component('app-call-progress', require('./components/CallProgress.vue'));
+//Vue.component('app-ward', require('./components/Ward.vue'));
 
-
+import acceptBill from './components/AcceptBill.vue'
 
 
 // const files = require.context('./', true, /\.vue$/i)
@@ -65,5 +65,8 @@ window.toast =toast
  */
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    components:{
+        appAcceptBill:acceptBill
+    }
 });
