@@ -7,6 +7,7 @@ use App\Bills;
 use Auth;
 use App\documents;
 use App\User;
+use Illuminate\Support\Facades\Session;
 class BillsController extends Controller
 {
     public function __construct()
@@ -72,17 +73,21 @@ class BillsController extends Controller
         return './bills/'. $document->file_path;
     }
     public function accept_bill_payemnt(){
-        return view('management.accept_bill');
+        $bills = Bills::with('user')->where('status','unpaid')->get();
+        return view('management.accept_bill',compact('bills'));
     }
     public function get_res_bills(){
         return Bills::with('user')->where('status','unpaid')->get();
     }
     public function bill_received($id){
+        
         $bill = Bills::find($id);
         $bill->status = 'paid';
         $bill->save();
+        Session::flash('success','Payment Received');
 
-        return ['message'=>'Payment Received'];
+        return redirect()->back();
+        //return ['message'=>'Payment Received'];
     }
 
 }
