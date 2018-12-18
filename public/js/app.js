@@ -38026,7 +38026,10 @@ Vue.component('app-application-management', __webpack_require__(345));
 Vue.component('app-dashboard', __webpack_require__(350));
 Vue.component('app-profile', __webpack_require__(368));
 Vue.component('app-accept-bill', __webpack_require__(398), {
-  name: 'app-accept-bill'
+    name: 'app-accept-bill'
+});
+Vue.component('app-view-application', __webpack_require__(403), {
+    name: 'app-view-application'
 });
 Vue.component('app-bills-management', __webpack_require__(373));
 //Vue.component('app-call-progress', require('./components/CallProgress.vue'));
@@ -38037,10 +38040,10 @@ Vue.component('app-bills-management', __webpack_require__(373));
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
 
 var toast = __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default.a.mixin({
-  toast: true,
-  position: 'top-end',
-  showConfirmButton: false,
-  timer: 3000
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
 });
 
 window.toast = toast;
@@ -38051,7 +38054,7 @@ window.toast = toast;
  */
 
 var app = new Vue({
-  el: '#app'
+    el: '#app'
 
 });
 
@@ -109374,7 +109377,7 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
-        [_vm._v("Bill Statement")]
+        [_vm._v("Document View")]
       ),
       _vm._v(" "),
       _c(
@@ -116436,6 +116439,279 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-5d49065a", module.exports)
+  }
+}
+
+/***/ }),
+/* 403 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(404)
+}
+var normalizeComponent = __webpack_require__(5)
+/* script */
+var __vue_script__ = __webpack_require__(406)
+/* template */
+var __vue_template__ = __webpack_require__(407)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-0da53f20"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/viewApplication.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0da53f20", Component.options)
+  } else {
+    hotAPI.reload("data-v-0da53f20", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 404 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(405);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("251606fd", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0da53f20\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./viewApplication.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0da53f20\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./viewApplication.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 405 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 406 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_ViewBill__ = __webpack_require__(279);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_ViewBill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_ViewBill__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        appViewBills: __WEBPACK_IMPORTED_MODULE_0__components_ViewBill___default.a
+    },
+    name: "view-application",
+    props: ['id'],
+    data: function data() {
+        return {
+            plan: {},
+            documents: {},
+            file_path: ''
+        };
+    },
+
+    methods: {
+        get_plan: function get_plan() {
+            var _this = this;
+
+            axios.get('/get_plan_and_doc/' + this.id).then(function (response) {
+                _this.plan = response.data.plan;
+                _this.documents = response.data.documents;
+            }).catch(function (errors) {
+                console.log(errors);
+            });
+        },
+        opeModal: function opeModal(myfile) {
+            var _this2 = this;
+
+            axios.get('/prepare_file/' + myfile).then(function (response) {
+                _this2.file_path = response.data;
+
+                console.log(_this2.file_path);
+            }).catch(function (errors) {
+                console.log(errors);
+            });
+
+            $("#viewBill").modal('show');
+        }
+    },
+    created: function created() {
+        this.get_plan();
+    }
+});
+
+/***/ }),
+/* 407 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "card" },
+    [
+      _c("div", { staticClass: "card-header" }, [_vm._v("View Application")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c("h2", [_vm._v("Application")]),
+        _vm._v(" "),
+        _c("table", { staticClass: "table" }, [
+          _c("tr", [
+            _c("td", [_vm._v("Application Type")]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(_vm.plan[0].plan_type.description))])
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", [_vm._v("Application Date")]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(_vm.plan[0].plan_date))])
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", [_vm._v("Motivation")]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(_vm.plan[0].motivation))])
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", [_vm._v("Motivation")]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(_vm.plan[0].status))])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("h2", [_vm._v("Application Document(s)")]),
+        _vm._v(" "),
+        _c(
+          "table",
+          { staticClass: "table" },
+          _vm._l(_vm.documents, function(document) {
+            return _c("tr", [
+              _c("td", [_vm._v(_vm._s(document.document_type.description))]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-info",
+                    on: {
+                      click: function($event) {
+                        _vm.opeModal(document.file_path)
+                      }
+                    }
+                  },
+                  [_vm._v("View")]
+                )
+              ])
+            ])
+          })
+        )
+      ]),
+      _vm._v(" "),
+      _c("app-view-bills", { attrs: { file_path: _vm.file_path } })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0da53f20", module.exports)
   }
 }
 

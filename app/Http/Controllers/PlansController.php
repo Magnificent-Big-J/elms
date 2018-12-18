@@ -143,9 +143,20 @@ class PlansController extends Controller
     }
     public function view_application($id){
 
-        return view('management.ViewApplication');
+
+        return view('management.ViewApplication',compact('id'));
     }
     public function test(){
         return view('management.test');
+    }
+    public function get_plan_and_doc($id){
+        $plan = Plans::with('planType')->where('id',$id)->get();
+        $doc = documents::with('document_type')->where('plan_id',$id)->get();
+
+        return ['plan'=>$plan,'documents'=>$doc];
+    }
+    public function prepare_file($file){
+
+        return '../certificates/'. $file;
     }
 }

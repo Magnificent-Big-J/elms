@@ -31,7 +31,9 @@
                         <td>{{$plan->plan_date}} </td>
                         <td>{{$plan->user->name}} {{$plan->user->surname}}</td>
                         <td>{{$plan->status}}</td>
-                        <td>View</td>
+                        <td>
+                            <a href="{{route('view.applation',$plan->id)}}" class="btn btn-info btn-sm">View</a>
+                        </td>
 
                     </tr>
                 @endforeach

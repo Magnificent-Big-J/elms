@@ -53,7 +53,10 @@ Route::get('/get_application','PlansController@get_application')->name('get.appl
 Route::get('/Application-Management','PlansController@application_management')->name('application.management');
 Route::put('/application_update/{id}','PlansController@update')->name('applation.update');
 Route::get('/Application-Progress','PlansController@application_progress')->name('applation.progress');
+Route::get('/View-Application/{id}','PlansController@view_application')->name('view.applation');
 Route::get('/test','PlansController@test')->name('test');
+Route::get('/get_plan_and_doc/{id}','PlansController@get_plan_and_doc')->name('get.plandoc');
+Route::get('/prepare_file/{file}','PlansController@prepare_file')->name('prepare.file');
 
 Route::get('/Projects','ProjectsController@index')->name('projects');
 Route::get('/get_projects','ProjectsController@get_projects')->name('get.projects');
