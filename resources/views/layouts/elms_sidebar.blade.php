@@ -139,12 +139,14 @@
                    Application Progress
                 </a>
             </li>
+            @can('isEmployee')
             <li class="nav-item">
                 <a class="nav-link {{Request::is('Bill-History')?'active':''}}" href="{{url('/Bill-History')}}">
                     <span data-feather="grid"></span>
                     Bill History
                 </a>
             </li>
+            @endcan
         </ul>
 
     </div>
