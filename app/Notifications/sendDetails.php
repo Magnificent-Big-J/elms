@@ -43,11 +43,9 @@ class sendDetails extends Notification
         return (new MailMessage)
                     ->line('Welcome to Emalahleni Municipality System')
                     ->line('Your login credentials are as follows:')
-                    ->line('E-mail Address:'. $this->user->name)
+                    ->line('E-mail Address:'. $this->user->email)
                     ->line('Password:secret')
                     ->action('Login', route('login'))
-                    ->line('To change the password click the reset link')
-                    ->action('Reset password', route('password.email'))
                     ->line('Thank you for using our application!');
     }
 
