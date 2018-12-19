@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
+use App\Notifications\sendDetails;
+
 class usersController extends Controller
 {
     public function __construct()
@@ -46,6 +48,7 @@ class usersController extends Controller
         $user = array_merge($user,array('password'=>bcrypt('secret')));
         $user = User::create($user);
 
+        $user->notify(new sendDetails($user));
 
       return $user;
     }

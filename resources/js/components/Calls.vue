@@ -10,10 +10,17 @@
                 <div id="loader"></div>
 
             </div>
+            <h5>Status Colour explaination</h5>
+            <p >
+                <span class="bg-primary">New </span> / <span class="bg-warning">Accepted </span>
+            </p>
+
+
             <table class="table table-hover table-bordered table-stropped">
                 <thead>
                 <th>Call Reason</th>
                 <th>Logged By</th>
+                <th>Address</th>
                 <th>Date</th>
                 <th>Status</th>
                 <th>Action</th>
@@ -22,12 +29,14 @@
                 <tr v-for="call in calls">
                     <td>{{call.call_type.description}}</td>
                     <td>{{call.user.name}} {{call.user.surname}}</td>
+                    <td>{{call.user.address}}</td>
                     <td>{{call.call_date}}</td>
-                    <td>{{call.status}}</td>
+                    <td v-if="call.status == 'new'" class="bg-primary"></td>
+                    <td v-else="call.status == 'new'" class="bg-warning"></td>
                     <td>
-                        <button class="btn btn-info" @click="opeModal(call)">More Info</button>
-                        <button class="btn btn-warning" @click="update(call.id,1)">Accept</button>
-                        <button class="btn btn-success" @click="update(call.id,2)">Close</button>
+                        <button class="btn btn-info btn-sm" @click="opeModal(call)">Info</button>
+                        <button class="btn btn-warning btn-sm" @click="update(call.id,1)">Accept</button>
+                        <button class="btn btn-success btn-sm" @click="update(call.id,2)">Close</button>
                     </td>
                 </tr>
                 </tbody>
@@ -84,9 +93,10 @@
                         .then((response)=>{
                         swal(
                             response.data.status,
-                        response.data.message,
-                        'success'
-            )
+                            response.data.message,
+                            'success'
+                            )
+                            this.get_calls()
 
                         })
                         .catch((error)=>{

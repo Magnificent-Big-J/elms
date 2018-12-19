@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-8 offset-md-2">
                     <div class="form-group row text-center">
-                        <label for="call_type_id" class="col-sm-4 col-form-label text-md-right">Book ward councilor for </label>
+                        <label for="call_type_id" class="col-sm-4 col-form-label text-md-right">Log a Call for </label>
 
                         <div class="col-md-6">
                             <select name="call_type_id" id="call_type_id" v-model="call.call_type_id" :class="{'is-invalid':errors.call_type_id}"  class="form-control">

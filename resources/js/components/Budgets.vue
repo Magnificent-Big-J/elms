@@ -15,19 +15,21 @@
                     <th>Budget Description</th>
                     <th>Year</th>
                     <th>Allocated Amount</th>
-                    <th>Spent Amount</th>
                     <th>Remaining Amount</th>
+                    <th> Spent Amount</th>
                     <th>Action</th>
                 </thead>
                 <tbody>
-                <tr v-for="budget in budgets">
+                <tr v-for="budget,key in budgets">
                     <td>{{budget.description}}</td>
                     <td>{{budget.year}}</td>
                     <td>R {{budget.allocated_amount}}</td>
-                    <td>R {{parseInt(budget.allocated_amount) - parseInt(budget.used_amount) }}</td>
+                    <td v-if="budget.used_amount>0">R {{parseInt(budget.allocated_amount) - parseInt(budget.used_amount) }}</td>
+                    <td v-else>R 0</td>
                     <td>R {{budget.used_amount}}</td>
                     <td>
-                        <button class="btn btn-info">XX</button>
+                        <button class="btn btn-info" @click="budgetup(key)">Edit</button>
+
                     </td>
                 </tr>
                 </tbody>
@@ -35,11 +37,13 @@
 
         </div>
         <app-budget></app-budget>
+        <app-update-budget></app-update-budget>
     </div>
 </template>
 
 <script>
     import budget from '../components/Budget.vue'
+    import updateBudget from '../components/UpdateBudget'
     export default {
         name: "budgets",
         data(){return{
@@ -47,7 +51,8 @@
             data_isLoading:false
         }},
         components:{
-        appBudget:budget
+            appBudget:budget,
+            appUpdateBudget: updateBudget
         },
         methods:{
             opeModal(){
@@ -64,7 +69,12 @@
             .catch((errors)=>{
                     console.log(errors)
             })
+            },
+            budgetup(key){
+                this.$children[1].upbudget = this.budgets[key]
+                $("#budgetUpdate").modal('show')
             }
+
         },
         created(){
             this.get_budgets()

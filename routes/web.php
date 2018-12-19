@@ -66,6 +66,7 @@ Route::put('/update_project/{id}','ProjectsController@update')->name('update.pro
 Route::get('/Budgets','BudgetsController@index')->name('budget');
 Route::post('/add_budget','BudgetsController@store')->name('add.budget');
 Route::get('/get_budgets','BudgetsController@get_budgets')->name('get.budgets');
+Route::put('/update_budget','BudgetsController@update')->name('update.budget');
 
 Route::get('/Bookings','BookingController@index')->name('bookings');
 Route::post('/add_booking','BookingController@store')->name('add.booking');
