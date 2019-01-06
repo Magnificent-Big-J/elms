@@ -4,7 +4,7 @@
 
             <li class="nav-item">
                 <a class="nav-link {{Request::is('Profile')?'active':''}}" href="{{url('/Profile')}}" >
-                    <span data-feather="home"></span>
+                    <span data-feather="user"></span>
                     {{ Auth::user()->name }} {{ Auth::user()->surname }} <span class="sr-only">(current)</span>
                 </a>
             </li>
@@ -139,6 +139,20 @@
                    Application Progress
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{Request::is('Project-Suggestions')?'active':''}}" href="{{url('/Project-Suggestions')}}">
+                    <span data-feather="compass"></span>
+                    Project Suggestions
+                </a>
+            </li>
+            @can('isEmployee|isResidence')
+            <li class="nav-item">
+                <a class="nav-link {{Request::is('Ward-Coucilor-Meetings')?'active':''}}" href="{{url('/Ward-Coucilor-Meetings')}}">
+                    <span data-feather="menu"></span>
+                    Ward Coucilor Meetings
+                </a>
+            </li>
+            @endcan
             @can('isEmployee')
             <li class="nav-item">
                 <a class="nav-link {{Request::is('Bill-History')?'active':''}}" href="{{url('/Bill-History')}}">

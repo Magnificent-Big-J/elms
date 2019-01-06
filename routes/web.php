@@ -22,6 +22,7 @@ Route::post('/addUser','usersController@store')->name('add.user');
 Route::put('/update_user','usersController@update')->name('update');
 Route::get('/get_profile','usersController@get_profile')->name('get_profile');
 Route::get('/Profile','usersController@profile')->name('profile');
+Route::post('/updateDetails','usersController@updateDetails')->name('update.details');
 
 Route::get('/Calls','CallsController@index')->name('calls');
 Route::get('/get_calls','CallsController@get_calls')->name('get.calls');
@@ -34,6 +35,8 @@ Route::get('/Call-Progress','CallsController@progress')->name('Call.Progress');
 Route::get('/tests','CallsController@progress')->name('Call.Progress');
 
 Route::get('/Meetings','MeetingController@index')->name('meetings');
+Route::get('/Ward-Coucilor-Meetings','MeetingController@ward_meetings')->name('ward.meetings');
+Route::get('/get_ward_meeting','MeetingController@get_ward_meeting')->name('ward.get_meetings');
 Route::get('/Accepted-Meeting','MeetingController@acceptedmeeting')->name('accepted.meeting');
 Route::get('/get_meetings','MeetingController@get_meetings')->name('get.meetings');
 Route::put('/meeting_update/{id}','MeetingController@update')->name('meeting.update');
@@ -42,6 +45,8 @@ Route::get('/wardCouncil','MeetingController@wardCouncil')->name('wardCouncil');
 Route::post('/createMeeting','MeetingController@store')->name('create.meeting');
 
 Route::get('/Suggestions','SuggestionController@index')->name('suggestions');
+Route::get('/get_com_sug','SuggestionController@get_suggestions')->name('get.com_sug');
+Route::get('/Project-Suggestions','SuggestionController@project_suggestion')->name('Project.Suggestions');
 Route::post('/addsuggession','SuggestionController@store')->name('addsuggession');
 
 
@@ -90,7 +95,5 @@ Auth::routes();
 
 Route::get('/Dashboard', 'HomeController@index')->name('Dashboard');
 Route::get('/callStats', 'StatsController@callStats')->name('callStats');
-Route::get('/projectsStats', 'StatsController@projectsStats')->name('projectsStats');
-Route::get('/projectsStats', 'StatsController@projectsStats')->name('projectsStats');
 Route::get('/projectsStats', 'StatsController@projectsStats')->name('projectsStats');
 Route::get('/budgetStats', 'StatsController@budgetStats')->name('budgetStats');

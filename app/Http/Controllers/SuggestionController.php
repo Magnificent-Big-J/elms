@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProjectResources;
 use Illuminate\Http\Request;
 use App\Suggestion;
 use Auth;
@@ -30,6 +31,11 @@ class SuggestionController extends Controller
         return $suggestion;
     }
     public function get_suggestions(){
-        return Suggestion::all();
+        return ProjectResources::collection(Suggestion::with('user')->paginate(9)) ;
+    }
+
+    public function project_suggestion(){
+
+        return view('management.project_suggestion');
     }
 }

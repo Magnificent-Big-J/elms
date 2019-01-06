@@ -6,8 +6,10 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Add Upcoming Projects</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                        <h5 v-if="user.id"  class="modal-title" id="exampleModalLabel">Edit user information</h5>
+                        <h5 v-else class="modal-title" id="exampleModalLabel">Add User</h5>
+                        <button type="button" class="close" @click="closeMe" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -68,8 +70,9 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" @click="addUser">Add User</button>
+                        <button type="button" class="btn btn-secondary" @click="closeMe">Close</button>
+                        <button  v-if="user.id" type="button" class="btn btn-info" @click="updateInfo">Update User Info</button>
+                        <button v-else type="button" class="btn btn-primary" @click="addUser">Add User</button>
                     </div>
                 </div>
             </div>
@@ -82,7 +85,10 @@
     export default {
         name: "add-user",
         data(){return{
+            props:['id'],
+
             user:{
+                id:null,
                 name:'',
                 surname:'',
                 contact_number:'',
@@ -120,6 +126,39 @@
                     .catch((error)=>{
                         this.errors = error.response.data.errors
                     })
+            },
+            closeMe(){
+                $("#addNew").modal('hide')
+                this.user={
+                    name:'',
+                    surname:'',
+                    contact_number:'',
+                    gender:'',
+                    address:'',
+                    postal_code:'',
+                    email:'',
+                    type:''
+                }
+
+            },
+            updateInfo() {
+
+                //console.log(this.user)
+
+                axios.post('/updateDetails',this.user)
+                    .then((response)=>{
+                    swal(
+                    'Successfully Updated',
+                    response.data.message,
+                    'success'
+                    )
+
+            })
+            .catch((error)=>{
+                    this.errors = error.response.data.errors
+            })
+
+
             }
         }
     }

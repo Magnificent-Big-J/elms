@@ -39,7 +39,7 @@
                     @endforeach
                 </tbody>
             </table>
-
+                {{$calls->links()}}
         </div>
 
     </div>

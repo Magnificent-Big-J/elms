@@ -46,6 +46,8 @@ Vue.component('app-view-application', require('./components/viewApplication.vue'
     name: 'app-view-application'
 });
 Vue.component('app-bills-management', require('./components/BillsManagemnt.vue'));
+Vue.component('app-project-suggestion', require('./components/ProjectSuggestions.vue'));
+Vue.component('app-ward-councilor', require('./components/WardCouncilMeetings.vue'));
 //Vue.component('app-call-progress', require('./components/CallProgress.vue'));
 //Vue.component('app-ward', require('./components/Ward.vue'));
 

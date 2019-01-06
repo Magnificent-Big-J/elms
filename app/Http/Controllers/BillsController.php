@@ -90,7 +90,7 @@ class BillsController extends Controller
         //return ['message'=>'Payment Received'];
     }
     public function bill_history(){
-        $bills = Bills::with('user')->paginate(5);
+        $bills = Bills::with('user')->paginate(10);
         return view('management.bill_history',compact('bills'));
     }
 

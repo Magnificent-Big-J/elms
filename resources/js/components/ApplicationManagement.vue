@@ -33,6 +33,19 @@
 
 
             </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li v-bind:class="[{disabled:!pagination.prev_page_url}]" class="page-item">
+                    <a @click="get_bookings(pagination.prev_page_url)"  class="page-link" href="#">Previous</a>
+                </li>
+                <li class="page-item disabled">
+                    <a class="page-link text-dark" href="#"> Page {{pagination.current_page}} of {{pagination.last_page}}</a>
+                </li>
+                <li v-bind:class="[{disabled:!pagination.next_page_url}]" class="page-item">
+                    <a @click="get_bookings(pagination.next_page_url)" class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
 
         </div>
 
@@ -44,16 +57,21 @@
         name: "application-management",
         data(){return{
             applications:{},
-            data_isLoading:false
+            data_isLoading:false,
+            pagination:{},
+            url:'/get_application'
         }},
         methods:{
 
-            get_users(){
+            get_users(page_url){
+                let vm = this;
+                page_url = page_url || this.url
                 this.data_isLoading = true
-                axios.get('/get_application')
+                axios.get(page_url)
                     .then((response)=>{
-                    this.applications = response.data
                 this.data_isLoading = false
+                this.applications = response.data.data
+                vm.makePagination(response.data.meta, response.data.links);
 
             })
             .catch((errors)=>{
@@ -75,7 +93,18 @@
             .catch((error)=>{
                     console.log(error)
             })
+            },
+            makePagination(meta,links)
+            {
+                let pagination = {
+                    current_page : meta.current_page,
+                    last_page: meta.last_page,
+                    next_page_url: links.next,
+                    prev_page_url: links.prev
+                }
+                this.pagination = pagination;
             }
+
         },
         created(){
             this.get_users()

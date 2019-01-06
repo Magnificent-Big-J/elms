@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\documents;
+use App\Http\Resources\PlansResources;
 use Illuminate\Http\Request;
 use App\Plans;
 use Auth;
@@ -75,7 +76,7 @@ class PlansController extends Controller
 
     }
     public function get_application(){
-        return Plans::with('planType')->where('status','new')->get();
+        return PlansResources::collection(Plans::with('planType')->where('status','new')->paginate(9));
     }
     protected function get_plan_types(){
         return PlanType::all();
@@ -134,11 +135,12 @@ class PlansController extends Controller
     public function application_progress(){
 
         if(auth()->user()->type == 'residence'){
-            $plans = Plans::with('planType')->with('user')->Mine()->paginate(5);
+            $plans = Plans::with('planType')->with('user')->Mine();
         }
         else{
-            $plans = Plans::with('planType')->with('user')->paginate(5);
+            $plans = Plans::with('planType')->with('user');
         }
+        $plans = $plans->paginate(5);
         return view('management.application_progress',compact('plans'));
     }
     public function view_application($id){

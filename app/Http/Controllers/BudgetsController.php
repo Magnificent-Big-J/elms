@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\BudgetResources;
 use Illuminate\Http\Request;
 use App\Budgets;
 use Auth;
@@ -56,6 +57,6 @@ class BudgetsController extends Controller
 
     }
     public function get_budgets(){
-        return Budgets::all();
+        return BudgetResources::collection(Budgets::paginate(10));
     }
 }

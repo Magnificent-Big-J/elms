@@ -30,6 +30,19 @@
                 </tr>
                 </tbody>
             </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li v-bind:class="[{disabled:!pagination.prev_page_url}]" class="page-item">
+                        <a @click="get_call_progress(pagination.prev_page_url)"  class="page-link" href="#">Previous</a>
+                    </li>
+                    <li class="page-item disabled">
+                        <a class="page-link text-dark" href="#"> Page {{pagination.current_page}} of {{pagination.last_page}}</a>
+                    </li>
+                    <li v-bind:class="[{disabled:!pagination.next_page_url}]" class="page-item">
+                        <a @click="get_call_progress(pagination.next_page_url)" class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
 
         </div>
 
@@ -42,21 +55,37 @@
         data(){return{
             calls:{},
             data_isLoading:false,
+            pagination:{},
+            url:'/Calls-Progress'
 
         }},
         methods:{
-            get_call_progress(){
+            get_call_progress(page_url){
                 this.data_isLoading = true
-                axios.get('/Calls-Progress')
+                let vm = this;
+                page_url = page_url || this.url
+                axios.get(page_url)
                     .then((response)=>{
-                    this.calls = response.data
+
                 this.data_isLoading = false
+                this.calls = response.data.data
+                vm.makePagination(response.data.meta, response.data.links);
 
             })
             .catch((errors)=>{
                     console.log(errors)
             })
         },
+            makePagination(meta,links)
+            {
+                let pagination = {
+                    current_page : meta.current_page,
+                    last_page: meta.last_page,
+                    next_page_url: links.next,
+                    prev_page_url: links.prev
+                }
+                this.pagination = pagination;
+            }
 
         },
         created(){

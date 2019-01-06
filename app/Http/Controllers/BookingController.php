@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\BookingResources;
 use Illuminate\Http\Request;
 use App\Booking;
 use App\BookingType;
@@ -62,7 +63,7 @@ class BookingController extends Controller
         return $booking;
     }
     public function get_bookings(){
-        return Booking::with('bookingType')->where('status','new')->get();
+        return BookingResources::collection(Booking::with('bookingType')->where('status','new')->paginate(9)) ;
     }
     public function get_booking_types(){
         return BookingType::all();

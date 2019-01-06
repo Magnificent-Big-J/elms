@@ -34,6 +34,19 @@
                 </tr>
                 </tbody>
             </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li v-bind:class="[{disabled:!pagination.prev_page_url}]" class="page-item">
+                        <a @click="get_budgets(pagination.prev_page_url)"  class="page-link" href="#">Previous</a>
+                    </li>
+                    <li class="page-item disabled">
+                        <a class="page-link text-dark" href="#"> Page {{pagination.current_page}} of {{pagination.last_page}}</a>
+                    </li>
+                    <li v-bind:class="[{disabled:!pagination.next_page_url}]" class="page-item">
+                        <a @click="get_budgets(pagination.next_page_url)" class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
 
         </div>
         <app-budget></app-budget>
@@ -48,7 +61,9 @@
         name: "budgets",
         data(){return{
             budgets:{},
-            data_isLoading:false
+            data_isLoading:false,
+            pagination:{},
+            url:'/get_budgets'
         }},
         components:{
             appBudget:budget,
@@ -58,13 +73,16 @@
             opeModal(){
                 $("#addNew").modal('show')
             },
-            get_budgets(){
+            get_budgets(page_url){
                 this.data_isLoading = true
-                axios.get('/get_budgets')
+                let vm = this;
+                page_url = page_url || this.url
+                axios.get(page_url)
                     .then((response)=>{
-                    this.budgets = response.data
-                this.data_isLoading = false
 
+                this.data_isLoading = false
+                this.budgets = response.data.data
+                vm.makePagination(response.data.meta, response.data.links);
             })
             .catch((errors)=>{
                     console.log(errors)
@@ -73,6 +91,16 @@
             budgetup(key){
                 this.$children[1].upbudget = this.budgets[key]
                 $("#budgetUpdate").modal('show')
+            },
+            makePagination(meta,links)
+            {
+                let pagination = {
+                    current_page : meta.current_page,
+                    last_page: meta.last_page,
+                    next_page_url: links.next,
+                    prev_page_url: links.prev
+                }
+                this.pagination = pagination;
             }
 
         },

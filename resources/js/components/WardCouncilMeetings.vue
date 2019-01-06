@@ -1,8 +1,8 @@
 <template>
     <div class="card">
         <div class="card-header">
-            Meeting Mananagement
-            <button class="btn btn-primary float-right" @click="opeModal">Create Meeting</button>
+          Ward Councilor  Meetings
+
         </div>
         <div class="card-body">
             <div id="loader-wrapper" v-if="data_isLoading" >
@@ -25,10 +25,7 @@
                                 To : {{meeting.end_date}}
                             </p>
                         </div>
-                        <div class="card-footer">
-                            <button class="btn btn-primary" @click="update(meeting.id,1)">Accept</button>
-                            <button class="btn btn-danger" @click="update(meeting.id,2)">Decline</button>
-                        </div>
+
                     </div>
                 </div>
 
@@ -46,17 +43,15 @@
                     </li>
                 </ul>
             </nav>
-
         </div>
-        <app-add-meeting></app-add-meeting>
+
     </div>
 </template>
 
 
 <script>
-    import addMeeting from '../components/AddMeeting'
     export default {
-        name: "meetings",
+        name: "ward-council-meetings",
         data(){return{
             data_isLoading:false,
             meetings:{},
@@ -64,37 +59,17 @@
             url:'/get_meetings'
         }},
         methods:{
-            opeModal(){
-                $("#addNew").modal('show')
-            },
             get_meetings(page_url){
-                this.data_isLoading = true
-                let vm = this;
-                page_url = page_url || this.url
-                axios.get(page_url)
-                    .then((response)=>{
-
-                        this.data_isLoading = false
-                this.meetings = response.data.data
-                vm.makePagination(response.data.meta, response.data.links);
+                        this.isLoading = true
+                         let vm = this;
+                        page_url = page_url || this.url
+                        axios.get(page_url)
+                            .then((response)=>{
+                            this.isLoading = false
+                            this.meetings = response.data.data
+                        vm.makePagination(response.data.meta, response.data.links);
                     })
-                    .catch((errors)=>{
-                            console.log(errors)
-                    })
-            },
-            update(id,value){
-
-                axios.put('/meeting_update/'+id,{value:value})
-                    .then((response)=>{
-                            swal(
-                                response.data.status,
-                            response.data.message,
-                            'success'
-                            )
-                        this.get_meetings()
-
-                    })
-                    .catch((error)=>{
+                    .then((error)=>{
                             console.log(error)
                     })
             },
@@ -107,10 +82,7 @@
                     prev_page_url: links.prev
                 }
                 this.pagination = pagination;
-            }
-        },
-        components:{
-            appAddMeeting:addMeeting
+            },
         },
         created(){
             this.get_meetings()

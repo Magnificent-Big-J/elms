@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserResources;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
@@ -54,7 +55,7 @@ class usersController extends Controller
     }
     public function get_users(){
 
-        return User::all();
+        return UserResources::collection(User::paginate(10)) ;
 
     }
     public function get_profile(){
@@ -63,6 +64,23 @@ class usersController extends Controller
     }
     public function get_residence(){
 
-        return User::where('type','residence')->get();
+        return UserResources::collection(User::where('type','residence')->paginate(10));
+    }
+    public function updateDetails(Request $request){
+
+
+        $user = $this->validate($request, [
+            'name' => ['required', 'string', 'max:255'],
+            'surname' => ['required', 'string', 'max:255'],
+            'email' => 'required|email|string|max:191|unique:users,email,'.$request->id,
+            'contact_number' => ['required', 'string', 'max:10'],
+            'postal_code' => ['required', 'numeric'],
+            'gender' => ['required', 'string'],
+            'address' => ['required', 'string'],
+            'type' => ['required', 'string'],
+        ]);
+        User::find($request->id)->update($user);
+
+        return ['message'=>'User data successfully updated'];
     }
 }

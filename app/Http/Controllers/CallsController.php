@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CallResources;
 use Illuminate\Http\Request;
 use App\Calls;
 use App\CallTypes;
@@ -69,21 +70,22 @@ class CallsController extends Controller
     public function CallsProgress(){
 
         if(auth()->user()->type =='residence'){
-            return Calls::with('callType')->with('user')->MyCalls()->get();
+            return CallResources::collection(Calls::with('callType')->with('user')->MyCalls()->paginate(10));
         }
         else{
-            return Calls::with('callType')->with('user')->get();
+            return CallResources::collection( Calls::with('callType')->with('user')->paginate(10));
         }
 
 
     }
     public function progress(){
         if(auth()->user()->type =='residence'){
-            $calls = Calls::with('callType')->with('user')->MyCalls()->get();
+            $calls = Calls::with('callType')->with('user')->MyCalls();
         }
         else{
-            $calls = Calls::with('callType')->with('user')->get();
+            $calls = Calls::with('callType')->with('user');
         }
+        $calls = $calls->paginate(10);
         return view('management.progress',compact('calls'));
     }
 }

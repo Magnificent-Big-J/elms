@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\MeetingResources;
 use App\MeetingType;
 use Illuminate\Http\Request;
 use App\Meeting;
@@ -57,7 +58,7 @@ class MeetingController extends Controller
     }
     public function get_meetings(){
 
-        return Meeting::with('meetingType')->where('status','new')->get();
+        return  MeetingResources::collection( Meeting::with('meetingType')->where('status','new')->paginate(9));
     }
     public function get_meeting_type(){
         return MeetingType::all();
@@ -67,6 +68,13 @@ class MeetingController extends Controller
         return view('management.meeting',compact('meetings'));
     }
     public function wardCouncil(){
-        return Meeting::with('meetingType')->where('status','accepted')->MyMettings()->get();
+       return Meeting::with('meetingType')->where('status','accepted')->MyMettings()->get();
+    }
+    public function ward_meetings(){
+
+        return view('residence.councilor_meetings');
+    }
+    public function get_ward_meeting(){
+        return MeetingResources::collection( Meeting::with('meetingType')->where('status','new')->paginate(9));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProjectResources;
 use Illuminate\Http\Request;
 use Auth;
 use App\Projects;
@@ -59,6 +60,6 @@ class ProjectsController extends Controller
 
     }
     public function get_projects(){
-        return Projects::all();
+        return ProjectResources::collection(Projects::paginate(10));
     }
 }
