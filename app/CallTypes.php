@@ -11,4 +11,7 @@ class CallTypes extends Model
     public function calls(){
         return $this->hasMany(Calls::class);
     }
+    public function users(){
+        return $this->hasMany(Calls::class);
+    }
 }

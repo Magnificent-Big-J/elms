@@ -58,6 +58,7 @@ class CallsController extends Controller
     public function get_calls(){
         return Calls::with('user')->with('callType')
                     ->where('status','new')
+                    ->where('call_type_id','=',auth()->user()->call_type_id)
                     ->orWhere('status','accepted')
                     ->get();
     }
@@ -72,6 +73,10 @@ class CallsController extends Controller
         if(auth()->user()->type =='residence'){
             return CallResources::collection(Calls::with('callType')->with('user')->MyCalls()->paginate(10));
         }
+        else if (auth()->user()->type =='employee'){
+
+            return CallResources::collection(Calls::with('callType')->with('user')->where('call_type_id','=',auth()->user()->call_type_id)->paginate(10));
+        }
         else{
             return CallResources::collection( Calls::with('callType')->with('user')->paginate(10));
         }
@@ -83,9 +88,10 @@ class CallsController extends Controller
             $calls = Calls::with('callType')->with('user')->MyCalls();
         }
         else{
-            $calls = Calls::with('callType')->with('user');
+            $calls = Calls::with('callType')->with('user')->where('call_type_id','=',auth()->user()->call_type_id);
         }
         $calls = $calls->paginate(10);
+
         return view('management.progress',compact('calls'));
     }
 }

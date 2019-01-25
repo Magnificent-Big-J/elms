@@ -22,7 +22,7 @@ class MeetingsTableSeeder extends Seeder
                 'address'=>$address,
                 'start_date'=>\Carbon\Carbon::now(),
                 'end_date'=>\Carbon\Carbon::now(),
-                'user_id'=>1
+                'user_id'=> rand(1,2)
             ]);
         }
     }

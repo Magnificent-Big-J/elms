@@ -59,7 +59,7 @@ Route::get('/Application-Management','PlansController@application_management')->
 Route::put('/application_update/{id}','PlansController@update')->name('applation.update');
 Route::get('/Application-Progress','PlansController@application_progress')->name('applation.progress');
 Route::get('/View-Application/{id}','PlansController@view_application')->name('view.applation');
-Route::get('/test','PlansController@test')->name('test');
+
 Route::get('/get_plan_and_doc/{id}','PlansController@get_plan_and_doc')->name('get.plandoc');
 Route::get('/prepare_file/{file}','PlansController@prepare_file')->name('prepare.file');
 
@@ -97,3 +97,8 @@ Route::get('/Dashboard', 'HomeController@index')->name('Dashboard');
 Route::get('/callStats', 'StatsController@callStats')->name('callStats');
 Route::get('/projectsStats', 'StatsController@projectsStats')->name('projectsStats');
 Route::get('/budgetStats', 'StatsController@budgetStats')->name('budgetStats');
+Route::get('/test',function (){
+
+    return view('test');
+
+});

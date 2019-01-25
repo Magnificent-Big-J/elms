@@ -59,14 +59,38 @@
                         <div class="form-group">
                             <label for="type">User Type</label>
 
-                            <select name="type" id="gender" class="form-control" :class="{'is-invalid':errors.type}" v-model="user.type">
+                            <select name="type" id="type" class="form-control" :class="{'is-invalid':errors.type}" v-model="user.type">
                                 <option value="">Select Type</option>
+
                                 <option value="employee">Employee</option>
                                 <option value="ward">Ward Councilor</option>
                                 <option value="residence">Residence</option>
+
                             </select>
                             <small class="text-danger" v-if="errors.type">{{errors.type[0]}}</small>
                         </div>
+                        <div class="form-group " v-if="user.type == 'employee'">
+                            <label for="call_type_id" >Employee Call Type </label>
+
+
+                            <select name="call_type_id" class="form-control"  id="call_type_id" v-model="user.call_type_id" :class="{'is-invalid':errors.call_type_id}"  >
+                                <option value="">Select Employee Call Type</option>
+
+                                <option v-for="call in calls" :value="call.id" v-text="call.description"></option>
+                            </select>
+                            <small class="text-danger" v-if="errors.call_type_id">{{errors.call_type_id[0]}}</small>
+
+                        </div>
+                        <div class="form-group" v-else>
+                            <label for="ward_no">Ward Number</label>
+
+                            <select name="type" id="ward_no" class="form-control" :class="{'is-invalid':errors.ward_no}" v-model="user.ward_no">
+                                <option value="">Select Ward Number</option>
+                                <option v-for="i in 14" :value="i" v-text="i"></option>
+                            </select>
+                            <small class="text-danger" v-if="errors.ward_no">{{errors.ward_no[0]}}</small>
+                        </div>
+
 
                     </div>
                     <div class="modal-footer">
@@ -96,10 +120,13 @@
                 address:'',
                 postal_code:'',
                 email:'',
-                type:''
+                type:'',
+                ward_no:'',
+                call_type_id:''
 
             },
-            errors:{}
+            errors:{},
+            calls:{}
         }},
         methods:{
             addUser(){
@@ -159,7 +186,19 @@
             })
 
 
+            },
+            get_call_types(){
+                axios.get('/get_call_types')
+                    .then((response)=>{
+                        this.calls = response.data
+                    })
+                    .catch((errors)=>{
+                        console.log(errors)
+                    })
             }
+        },
+        created(){
+            this.get_call_types()
         }
     }
 </script>

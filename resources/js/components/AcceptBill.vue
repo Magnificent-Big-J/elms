@@ -34,6 +34,8 @@
 </template>
 
 <script>
+
+
     export default {
         name: "accept-bill",
         data(){return{

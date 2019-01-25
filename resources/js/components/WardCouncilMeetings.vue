@@ -24,6 +24,9 @@
                             <p class="lead">
                                 To : {{meeting.end_date}}
                             </p>
+                            <p class="lead">
+                                Ward Councilor: {{meeting.user.name}} {{meeting.user.surname}} (Ward - {{meeting.user.ward_no}}  )
+                            </p>
                         </div>
 
                     </div>
@@ -56,7 +59,7 @@
             data_isLoading:false,
             meetings:{},
             pagination:{},
-            url:'/get_meetings'
+            url:'/get_ward_meeting'
         }},
         methods:{
             get_meetings(page_url){

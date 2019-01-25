@@ -58,7 +58,7 @@ class MeetingController extends Controller
     }
     public function get_meetings(){
 
-        return  MeetingResources::collection( Meeting::with('meetingType')->where('status','new')->paginate(9));
+        return  MeetingResources::collection( Meeting::with('meetingType')->where('user_id',auth()->user()->id)->where('status','new')->paginate(9));
     }
     public function get_meeting_type(){
         return MeetingType::all();
@@ -75,6 +75,6 @@ class MeetingController extends Controller
         return view('residence.councilor_meetings');
     }
     public function get_ward_meeting(){
-        return MeetingResources::collection( Meeting::with('meetingType')->where('status','new')->paginate(9));
+        return MeetingResources::collection( Meeting::with('meetingType')->with('user')->where('status','accepted')->paginate(9));
     }
 }

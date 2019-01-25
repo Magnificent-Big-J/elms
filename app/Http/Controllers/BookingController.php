@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\BookingResources;
+use App\User;
 use Illuminate\Http\Request;
 use App\Booking;
 use App\BookingType;
@@ -22,13 +23,17 @@ class BookingController extends Controller
         $booking = Booking::find($id);
         $status = null;
         $message = null;
+        $ward = User::find($booking->user_id);
+
+        $ward2 = User::where('type','=','ward')->where('ward_no','=',$ward->ward_no)->get();
+       
 
         switch($request->value){
             case 1:
                     $status = "accepted";
                     $message = "The Booking is accepted and meeting request has been created";
                     \App\Meeting::create([
-                        'user_id'=>1,
+                        'user_id'=>$ward2[0]->id,
                         'meeting_type_id'=>$request->value,
                         'address'=>$booking->address,
                         'start_date'=>$booking->start_date,

@@ -1,62 +1,89 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>ELMS</title>
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-    <!-- Styles -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <meta name="description" content="ELMS">
+    <meta name="author" content="ELMS">
 
-    <!-- Animation library for notifications   -->
-    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{asset('admin/images/logo.png')}} ">
 
-    <!--  Light Bootstrap Table core CSS    -->
-    <link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+    <!-- Bootstrap CSS -->
+    <link href=" {{asset('admin/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
 
+    <!-- Font Awesome CSS -->
+    <link href="{{asset('admin/font-awesome/css/font-awesome.min.css')}} " rel="stylesheet" type="text/css" />
 
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="assets/css/demo.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="{{asset('admin/css/style.css')}}" rel="stylesheet" type="text/css" />
 
+    <!-- BEGIN CSS for this page -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
+    <!-- END CSS for this page -->
 
-    <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 </head>
-<body>
 
-    <div class="wrapper" id="app">
-        @include('layouts.sidebar')
-        <div class="main-panel">
-            @include('layouts.navbar')
-            @yield('content')
-            @include('layouts.footer')
-        </div>
+<body class="adminbody">
 
+<div id="main" >
 
+    @include('layouts.navbar')
+    @include('layouts.sidebar')
+    <div class="content-page" id="app">
+
+       @yield('content')
 
     </div>
+    <!-- END content-page -->
 
+@include('layouts.footer')
 
-    <script src="{{asset('js/app.js')}}"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-    <!--  Charts Plugin -->
-    <script src="assets/js/chartist.min.js"></script>
+</div>
+<!-- END main -->
 
-    <!--  Notifications Plugin    -->
-    <script src="assets/js/bootstrap-notify.js"></script>
+<script src="{{asset('admin/js/modernizr.min.js')}}"></script>
+<script src="{{ asset('js/app.js') }}" ></script>
+<script src="{{asset('admin/js/moment.min.js')}}"></script>
 
+<script src="{{asset('admin/js/popper.min.js')}}"></script>
+<script src="{{asset('admin/js/bootstrap.min.js')}}"></script>
 
-    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-    <script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+<script src="{{asset('admin/js/detect.js')}}"></script>
+<script src="{{asset('admin/js/fastclick.js')}}"></script>
+<script src="{{asset('admin/js/jquery.blockUI.js')}}"></script>
+<script src="{{asset('admin/js/jquery.nicescroll.js')}}"></script>
 
-    <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<!-- App js -->
+<script src="{{asset('admin/js/pikeadmin.js')}}"></script>
+
+<!-- BEGIN Java Script for this page -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- Counter-Up-->
+<script src="{{asset('admin/plugins/waypoints/lib/jquery.waypoints.min.js')}}"></script>
+<script src="{{asset('admin//plugins/counterup/jquery.counterup.min.js')}}"></script>
+
+<script>
+    $(document).ready(function() {
+        // data-tables
+        $('#example1').DataTable();
+
+        // counter-up
+        $('.counter').counterUp({
+            delay: 10,
+            time: 600
+        });
+    } );
+</script>
+
 
 
 </body>
+
 </html>

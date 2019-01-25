@@ -1,45 +1,59 @@
-@extends('layouts.elms')
+@extends('layouts.master')
 @section('content')
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Meetings To Be Attended</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
 
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            Meetings To Be Attended
-        </div>
-        <div class="card-body">
-            <div id="loader-wrapper" v-if="data_isLoading" >
+    <div class="content">
 
-                <div id="loader"></div>
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="breadcrumb-holder">
+                        <h1 class="main-title float-left">Meetings To Be Attendedt</h1>
+                        <ol class="breadcrumb float-right">
+                            <li class="breadcrumb-item">Home</li>
+                            <li class="breadcrumb-item active">Meetings To Be Attended</li>
+                        </ol>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    Meetings To Be Attended
+                </div>
+                <div class="card-body">
+                    <div id="loader-wrapper" v-if="data_isLoading" >
+
+                        <div id="loader"></div>
+
+                    </div>
+                    <table class="table table-stripped table-bordered">
+                        <thead>
+                        <th>Agenda</th>
+                        <th>Address</th>
+                        <th>From</th>
+                        <th>To</th>
+
+                        </thead>
+                        <tbody>
+                        @foreach($meetings as $meeting)
+                            <tr >
+                                <td>{{$meeting->meetingType->description}}</td>
+                                <td>{{$meeting->address}}</td>
+                                <td>{{$meeting->start_date}}</td>
+                                <td>{{$meeting->end_date}}</td>
+
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+
+
+                </div>
 
             </div>
-            <table class="table table-stripped table-bordered">
-                <thead>
-                <th>Agenda</th>
-                <th>Address</th>
-                <th>From</th>
-                <th>To</th>
-
-                </thead>
-                <tbody>
-                @foreach($meetings as $meeting)
-                <tr >
-                    <td>{{$meeting->meetingType->description}}</td>
-                    <td>{{$meeting->address}}</td>
-                    <td>{{$meeting->start_date}}</td>
-                    <td>{{$meeting->end_date}}</td>
-
-                </tr>
-                    @endforeach
-                </tbody>
-            </table>
-
-
         </div>
+        <!-- END container-fluid -->
 
     </div>
-
 @endsection

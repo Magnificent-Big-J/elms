@@ -35,7 +35,6 @@ class usersController extends Controller
         return ['message'=>'Your Profile Contact Information have been updated successfully'];
     }
     public function store(Request $request){
-
         $user = $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
@@ -45,7 +44,16 @@ class usersController extends Controller
             'gender' => ['required', 'string'],
             'address' => ['required', 'string'],
             'type' => ['required', 'string'],
+
         ]);
+       if( $request->input('type') == 'employee' )
+        {
+            $user = array_merge($user,array('call_type_id'=> $request->input('call_type_id')));
+        }
+        else{
+            $user = array_merge($user,array('ward_no'=> $request->input('ward_no')));
+        }
+
         $user = array_merge($user,array('password'=>bcrypt('secret')));
         $user = User::create($user);
 
@@ -83,4 +91,5 @@ class usersController extends Controller
 
         return ['message'=>'User data successfully updated'];
     }
+
 }

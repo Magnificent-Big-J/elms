@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','surname','contact_number','gender','address','postal_code','type'
+        'name', 'email', 'password','surname','contact_number','gender','address','postal_code','type','call_type_id','ward_no'
     ];
 
     /**
@@ -48,5 +48,8 @@ class User extends Authenticatable
     }
     public function documents(){
         return $this->hasMany(documents::class);
+    }
+    public function callType(){
+        return $this->belongsTo(CallTypes::class);
     }
 }

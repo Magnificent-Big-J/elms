@@ -1,8 +1,8 @@
 <footer class="footer">
-    <div class="container-fluid">
-
-        <p class="copyright pull-right">
-            &copy; <script>document.write(new Date().getFullYear())</script> <a href="#">ELMS</a>, Service Delivery Is Our Top Priority
-        </p>
-    </div>
+		<span class="text-right">
+		Copyright <a target="_blank" href="#">ELMS</a>
+		</span>
+    <span class="float-right">
+		Powered by <a target="_blank" href="#"><b>DigitalReino</b></a>
+		</span>
 </footer>

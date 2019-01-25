@@ -17,6 +17,8 @@ require('chart.js');
 // vue-charts package
 require('hchs-vue-charts');
 Vue.use(VueCharts)
+import ActivityGraph from './components/ActivityGraph/ActivityGraph.vue'
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -49,7 +51,7 @@ Vue.component('app-bills-management', require('./components/BillsManagemnt.vue')
 Vue.component('app-project-suggestion', require('./components/ProjectSuggestions.vue'));
 Vue.component('app-ward-councilor', require('./components/WardCouncilMeetings.vue'));
 //Vue.component('app-call-progress', require('./components/CallProgress.vue'));
-//Vue.component('app-ward', require('./components/Ward.vue'));
+Vue.component('activity-graph',ActivityGraph);
 
 
 

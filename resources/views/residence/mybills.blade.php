@@ -1,10 +1,24 @@
-@extends('layouts.elms')
+@extends('layouts.master')
 @section('content')
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">My Bills</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="content">
 
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="breadcrumb-holder">
+                        <h1 class="main-title float-left">My Bills</h1>
+                        <ol class="breadcrumb float-right">
+                            <li class="breadcrumb-item">Home</li>
+                            <li class="breadcrumb-item active">My Bills</li>
+                        </ol>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <app-my-bills></app-my-bills>
         </div>
+        <!-- END container-fluid -->
+
     </div>
-    <app-my-bills></app-my-bills>
 @endsection

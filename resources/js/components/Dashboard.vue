@@ -1,79 +1,125 @@
 <template>
     <div>
+
+            <h2 class="text-uppercase m-b-20">Booking Statistics</h2>
+            <div class="row">
+
+                <div class="col-lg-4 col-md-4 ">
+
+                    <div class="card-box noradius noborder bg-default">
+                        <i class="fa fa-file-text-o float-right text-white"></i>
+                        <h6 class="text-white text-uppercase m-b-20">New Bookings</h6>
+                        <h1 class="m-b-20 text-white counter">{{calls.newBooking}}</h1>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 ">
+                    <div class="card-box noradius noborder bg-warning">
+                        <i class="fa fa-bar-chart float-right text-white"></i>
+                        <h6 class="text-white text-uppercase m-b-20">Accepted Bookings</h6>
+                        <h1 class="m-b-20 text-white counter">{{calls.acceptedBooking}}</h1>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 ">
+                    <div class="card-box noradius noborder bg-info">
+                        <i class="fa fa-user-o float-right text-white"></i>
+                        <h6 class="text-white text-uppercase m-b-20">Declined Booking</h6>
+                        <h1 class="m-b-20 text-white counter">{{calls.closedBooking}}</h1>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <!-- end row -->
+            <h2 class="text-uppercase m-b-20">Meeting Statics</h2>
+            <div class="row">
+
+                <div class="col-lg-4 col-md-4 ">
+
+                    <div class="card-box noradius noborder bg-default">
+                        <i class="fa fa-file-text-o float-right text-white"></i>
+                        <h6 class="text-white text-uppercase m-b-20">New Meetings</h6>
+                        <h1 class="m-b-20 text-white counter">{{calls.newMeeting}}</h1>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 ">
+                    <div class="card-box noradius noborder bg-warning">
+                        <i class="fa fa-bar-chart float-right text-white"></i>
+                        <h6 class="text-white text-uppercase m-b-20">Accepted Meetings</h6>
+                        <h1 class="m-b-20 text-white counter">{{calls.acceptedMeeting}}</h1>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 ">
+                    <div class="card-box noradius noborder bg-info">
+                        <i class="fa fa-user-o float-right text-white"></i>
+                        <h6 class="text-white text-uppercase m-b-20">Declined Meetings</h6>
+                        <h1 class="m-b-20 text-white counter">{{calls.declinedMeeting}}</h1>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <h2 class="text-uppercase m-b-20">Call Statistics</h2>
+            <div class="row">
+
+
+
+                <div class="col-lg-4 col-md-4 ">
+
+                    <div class="card-box noradius noborder bg-default">
+                        <i class="fa fa-file-text-o float-right text-white"></i>
+                        <h6 class="text-white text-uppercase m-b-20">New Calls</h6>
+                        <h1 class="m-b-20 text-white counter">{{calls.newCalls}}</h1>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 ">
+                    <div class="card-box noradius noborder bg-warning">
+                        <i class="fa fa-bar-chart float-right text-white"></i>
+                        <h6 class="text-white text-uppercase m-b-20">Accepted Calls</h6>
+                        <h1 class="m-b-20 text-white counter">{{calls.acceptedCalls}}</h1>
+
+                    </div>
+                </div>
+
+                <div class=" col-lg-4 col-md-4 ">
+                    <div class="card-box noradius noborder bg-info">
+                        <i class="fa fa-user-o float-right text-white"></i>
+                        <h6 class="text-white text-uppercase m-b-20">Closed Calls</h6>
+                        <h1 class="m-b-20 text-white counter">{{calls.closedCalls}}</h1>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
         <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">Booking Statistics</div>
-                    <div class="card-body">
-                        <table class="table">
 
-                            <tr>
-                                <td>New Bookings</td>
-                                <td> <span class="badge badge-primary">{{calls.newBooking}}</span></td>
-                            </tr>
-                            <tr>
-                                <td>Accepted Bookings</td>
-                                <td><span class="badge badge-info"> {{calls.acceptedBooking}}</span></td>
-                            </tr>
-                            <tr>
-                                <td>Declined Booking</td>
-                                <td><span class="badge badge-danger">{{calls.closedBooking}}</span></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">Meeting Statics</div>
-                    <div class="card-body">
-                        <table class="table">
+            <div class="col-lg-6 col-md-6 ">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h3><i class="fa fa-bar-chart-o"></i> Budget</h3>
 
-                            <tr>
-                                <td>New Meetings</td>
-                                <td><span class="badge badge-primary">{{calls.newMeeting}}</span></td>
-                            </tr>
-                            <tr>
-                                <td>Accepted Meetings</td>
-                                <td><span class="badge badge-info">{{calls.acceptedMeeting}}</span></td>
-                            </tr>
-                            <tr>
-                                <td>Declined Meeting</td>
-                                <td><span class="badge badge-danger">{{calls.declinedMeeting}}</span></td>
-                            </tr>
-                        </table>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">Call Statistics</div>
-                    <div class="card-body">
-                    <table class="table">
 
-                        <tr>
-                            <td>New Calls</td>
-                            <td><span class="badge badge-primary">{{calls.newCalls}}</span></td>
-                        </tr>
-                        <tr>
-                            <td>Accepted Calls</td>
-                            <td><span class="badge badge-info">{{calls.acceptedCalls}}</span></td>
-                        </tr>
-                        <tr>
-                            <td>Closed Calls</td>
-                            <td><span class="badge badge-danger">{{calls.closedCalls}}</span></td>
-                        </tr>
-                    </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-4">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">Budget</div>
                     <div class="card-body">
-                        <table class="table table-hover table-bordered table-stropped">
+                        <table class="table table-responsive-xl table-striped">
                             <thead>
                             <th>Budget Description</th>
                             <th>Allocated Amount</th>
@@ -91,17 +137,23 @@
                         </table>
                     </div>
                     <card class="card-footer">
-                       <p class="lead">Total Budget :R{{budget.total}}</p>
+                        <p class="lead">Total Budget :R{{budget.total}}</p>
                         <p class="lead">Total Used Budget :R{{budget.total_used}}</p>
                         <p class="lead">Total Remaining Budget :R{{budget.total_left}}</p>
                     </card>
-                </div>
+
+                </div><!-- end card-->
             </div>
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Projects</div>
+
+            <div class="col-lg-6 col-md-6">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h3><i class="fa fa-line-chart"></i> Projects</h3>
+
+                    </div>
+
                     <div class="card-body">
-                        <table class="table table-hover table-bordered table-stropped">
+                        <table class="table table-responsive-xl table-striped">
                             <thead>
                             <th>Name</th>
                             <th>Start Date</th>
@@ -119,10 +171,16 @@
                             </tr>
                             </tbody>
                         </table>
+
+
                     </div>
-                </div>
+
+                </div><!-- end card-->
             </div>
+
         </div>
+
+
 
     </div>
 </template>
